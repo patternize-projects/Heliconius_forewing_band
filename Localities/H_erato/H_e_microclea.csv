@@ -1,0 +1,90 @@
+unique_registros_ID,species,taxon_nombre,status_type,nombre_type,comentarios,sexo,localidad_codigo,elev_min_etiq,elev_max_etiq,elev_unidad,dia,mes,ano,colector,coleccion,fecha,digitador,duplicate,lat_dec,lon_dec,latlong_fuente
+62,erato,erato microclea Heliconius,,,,female,"Mina Pichita, 6 km S, San Ramon PER JU",1300,1300,m,,,,,Mallet,date may be available on this specimen - see Mallet database.,NEIL ROSSER,,-11.139981,-75.416444,Google Earth
+2,erato,erato microclea Heliconius,,,,female,"Camino a Catorata del Tirol, San Ramon PER JU",795,795,m,,,,,Mallet,date may be available on this specimen - see Mallet database.,NEIL ROSSER,,-11.10861111,-75.34361111,Mallet lab database
+3,erato,erato microclea Heliconius,,,,female,"Km 3, Satipo - Cashingari PER JU",500,500,m,,,,,Mallet,date may be available on this specimen - see Mallet database.,NEIL ROSSER,,-11.14194444,-74.60944444,Mallet lab database
+4,erato,erato microclea Heliconius,,,,female,"Km 3, Satipo - Cashingari PER JU",500,500,m,,,,,Mallet,date may be available on this specimen - see Mallet database.,NEIL ROSSER,,-11.14194444,-74.60944444,Mallet lab database
+5,erato,erato microclea Heliconius,,,,female,"Km 3, Satipo - Cashingari PER JU",500,500,m,,,,,Mallet,date may be available on this specimen - see Mallet database.,NEIL ROSSER,,-11.14194444,-74.60944444,Mallet lab database
+6005,erato,erato microclea Heliconius,,,,macho,Palcazu PER HU,,,m,,,,Sedlmayr,BMNH,,NEIL ROSSER,,-9.883333333,-74.93333333,Brown
+6007,erato,erato microclea Heliconius,,,,macho,Chanchamayo PER JU,,,m,,,,"Schunke, O.",BMNH,,NEIL ROSSER,,-11.06666667,-75.31666667,Brown
+6008,erato,erato microclea Heliconius,,,,macho,La Merced  PER JU,,,m,,,,"Schunke, O.",BMNH,,NEIL ROSSER,,-11.05,-75.31666667,"Gerardo Lamas, unpub. gazetteer"
+6009,erato,erato microclea Heliconius,,,,macho,Perene Rio PER JU,1800,2000,ft,,,,"Watkins, C.",BMNH,"xii,ii,19,20",NEIL ROSSER,,-11.15,-74.3,"Gerardo Lamas, unpub. gazetteer"
+6010,erato,erato microclea Heliconius,,,,macho,San Luis de Shuaro PER JU,2250,2250,ft,,11,1919,,BMNH,,NEIL ROSSER,,-10.88333333,-75.28333333,"Gerardo Lamas, unpub. gazetteer"
+6011,erato,erato microclea Heliconius,,,,macho,Pichis Road PER PA,4800,4800,ft,14,2,1919,"Watkins, C.",BMNH,Date correct?,NEIL ROSSER,,-10.25,-74.75,Brown 1979
+6012,erato,erato microclea Heliconius,,,,macho,Inca Perene PER JU,2000,2000,ft,,,,,BMNH,,NEIL ROSSER,,-10.88333333,-75.21666667,Geonames
+6013,erato,erato microclea Heliconius,,,,macho,La Merced  PER JU,3000,4500,ft,,,1920,,BMNH,"i,ii",NEIL ROSSER,,-11.05,-75.31666667,"Gerardo Lamas, unpub. gazetteer"
+6014,erato,erato microclea Heliconius,,,,macho,San Remon PER,3000,3000,ft,,8,1903,Watkins & Tomlinson,BMNH,,NEIL ROSSER,,-11.13333333,-75.35,Lamas unpublished
+6019,erato,erato microclea Heliconius,,,microclea X lativitta. Ssp NA - amended 1.12.09,macho,Pichis Road PER PA,5000,5000,ft,,,1920,"Watkins, C.",BMNH,"i,ii",NEIL ROSSER,,-10.25,-74.75,Brown 1979
+10610,erato,erato microclea Heliconius,,,,macho,Satipo PER JU,,,m,,,,,MGCL/FLMNH,,NEIL ROSSER,,-11.25,-74.63333333,"Gerardo Lamas, unpub. gazetteer"
+14019,erato,erato microclea Heliconius,,,,unknown,Cahuapanas PER PA,,,m,,,,,FLMNH (not labelled) - Basement,,NEIL ROSSER,,-10.09444444,-74.99222222,Falling Rain
+14020,erato,erato microclea Heliconius,,,,unknown,Satipo PER JU,,,m,,,,,FLMNH (not labelled) - Basement,,NEIL ROSSER,,-11.25,-74.63333333,"Gerardo Lamas, unpub. gazetteer"
+14021,erato,erato microclea Heliconius,,,,unknown,Satipo PER JU,,,m,,,,,FLMNH (not labelled) - Basement,,NEIL ROSSER,,-11.25,-74.63333333,"Gerardo Lamas, unpub. gazetteer"
+14023,erato,erato microclea Heliconius,,,,unknown,Perene PER JU,,,m,,,,,FLMNH (not labelled) - Basement,,NEIL ROSSER,,-10.96666667,-75.21666667,Geonames
+14024,erato,erato microclea Heliconius,,,,unknown,Chanchamayo PER JU,,,m,,,,,FLMNH (not labelled) - Basement,,NEIL ROSSER,,-11.06666667,-75.31666667,Brown
+14025,erato,erato microclea Heliconius,,,,unknown,Chucharras Rio (Rio Palcazu) PER PA,,,m,,,,,FLMNH (not labelled) - Basement,,NEIL ROSSER,,-10.15,-75.23333333,"Gerardo Lamas, unpub. gazetteer"
+15841,erato,erato microclea Heliconius,,,,unknown,Villa Capiri PER,,,m,,,,,FLMNH (not labelled) - Basement,,NEIL ROSSER,,-11.12972222,-74.67277778,Geonames
+16111,erato,erato microclea Heliconius,,,,unknown,Oxapampa PER PA,,,m,,,,,FLMNH (not labelled) - Accessions (2nd floor),,NEIL ROSSER,,-10.58333333,-75.4,"Gerardo Lamas, unpub. gazetteer"
+16112,erato,erato microclea Heliconius,,,,unknown,Chanchamayo PER JU,,,m,,,,,FLMNH (not labelled) - Accessions (2nd floor),,NEIL ROSSER,,-11.06666667,-75.31666667,Brown
+16113,erato,erato microclea Heliconius,,,HYBRIID,unknown,Chanchamayo PER JU,,,m,,,,,FLMNH (not labelled) - Accessions (2nd floor),,NEIL ROSSER,,-11.06666667,-75.31666667,Brown
+27393,erato,erato microclea Heliconius,,,,macho,Satipo PER JU,,,m,,2,1994,,FLMNH,,Neil Rosser,,-11.25,-74.63333333,"Gerardo Lamas, unpub. gazetteer"
+27394,erato,erato microclea Heliconius,,,,macho,Satipo PER JU,,,m,,2,1994,,FLMNH,,Neil Rosser,,-11.25,-74.63333333,"Gerardo Lamas, unpub. gazetteer"
+27395,erato,erato microclea Heliconius,,,,macho,Satipo PER JU,,,m,,2,1994,,FLMNH,,Neil Rosser,,-11.25,-74.63333333,"Gerardo Lamas, unpub. gazetteer"
+27396,erato,erato microclea Heliconius,,,,macho,Satipo PER JU,,,m,,,1987,,FLMNH,01-Jun,Neil Rosser,,-11.25,-74.63333333,"Gerardo Lamas, unpub. gazetteer"
+27397,erato,erato microclea Heliconius,,,,macho,Satipo PER JU,,,m,,2,1994,,FLMNH,,Neil Rosser,,-11.25,-74.63333333,"Gerardo Lamas, unpub. gazetteer"
+27398,erato,erato microclea Heliconius,,,,macho,Satipo PER JU,,,m,,2,1994,,FLMNH,,Neil Rosser,,-11.25,-74.63333333,"Gerardo Lamas, unpub. gazetteer"
+27399,erato,erato microclea Heliconius,,,,macho,Satipo PER JU,,,m,,2,1994,,FLMNH,,Neil Rosser,,-11.25,-74.63333333,"Gerardo Lamas, unpub. gazetteer"
+27400,erato,erato microclea Heliconius,,,,macho,Satipo PER JU,,,m,,,1987,,FLMNH,01-Jun,Neil Rosser,,-11.25,-74.63333333,"Gerardo Lamas, unpub. gazetteer"
+27401,erato,erato microclea Heliconius,,,,macho,Satipo PER JU,,,m,,2,1994,,FLMNH,,Neil Rosser,,-11.25,-74.63333333,"Gerardo Lamas, unpub. gazetteer"
+27402,erato,erato microclea Heliconius,,,,macho,Satipo PER JU,,,m,,,1987,,FLMNH,01-Jun,Neil Rosser,,-11.25,-74.63333333,"Gerardo Lamas, unpub. gazetteer"
+27403,erato,erato microclea Heliconius,,,,macho,Satipo PER JU,,,m,,2,1994,,FLMNH,,Neil Rosser,,-11.25,-74.63333333,"Gerardo Lamas, unpub. gazetteer"
+27404,erato,erato microclea Heliconius,,,,macho,Satipo PER JU,,,m,,2,1994,,FLMNH,,Neil Rosser,,-11.25,-74.63333333,"Gerardo Lamas, unpub. gazetteer"
+27405,erato,erato microclea Heliconius,,,,macho,Satipo PER JU,,,m,,,1987,,FLMNH,01-Jun,Neil Rosser,,-11.25,-74.63333333,"Gerardo Lamas, unpub. gazetteer"
+27406,erato,erato microclea Heliconius,,,,macho,Satipo PER JU,,,m,,2,1994,,FLMNH,,Neil Rosser,,-11.25,-74.63333333,"Gerardo Lamas, unpub. gazetteer"
+27407,erato,erato microclea Heliconius,,,,macho,Satipo PER JU,,,m,,2,1994,,FLMNH,,Neil Rosser,,-11.25,-74.63333333,"Gerardo Lamas, unpub. gazetteer"
+27408,erato,erato microclea Heliconius,,,,macho,Satipo PER JU,,,m,,2,1994,,FLMNH,,Neil Rosser,,-11.25,-74.63333333,"Gerardo Lamas, unpub. gazetteer"
+27409,erato,erato microclea Heliconius,,,,macho,Vilcabamba Cord de PER JU,,,m,,,,,FLMNH,,Neil Rosser,,-11.55,-73.63333333,"Gerardo Lamas, unpub. gazetteer"
+27410,erato,erato microclea Heliconius,,,,macho,Satipo PER JU,,,m,,2,1994,,FLMNH,,Neil Rosser,,-11.25,-74.63333333,"Gerardo Lamas, unpub. gazetteer"
+27411,erato,erato microclea Heliconius,,,microclea x luscombei,macho,Vilcabamba Cord de PER JU,,,m,,,,,FLMNH,,Neil Rosser,,-11.55,-73.63333333,"Gerardo Lamas, unpub. gazetteer"
+27412,erato,erato microclea Heliconius,,,microclea x luscombei,macho,Satipo PER JU,,,m,,2,1990,,FLMNH,,Neil Rosser,,-11.25,-74.63333333,"Gerardo Lamas, unpub. gazetteer"
+27413,erato,erato microclea Heliconius,,,microclea x luscombei,macho,Puyemi Rio PER JU,,,m,,5,1988,,FLMNH,,Neil Rosser,,-11.37562222,-73.83156944,Google Earth
+27414,erato,erato microclea Heliconius,,,microclea x luscombei,macho,Shima PER JU,,,m,2,2,1998,,FLMNH,,Neil Rosser,,-10.76666667,-73.73333333,"Gerardo Lamas, unpub. gazetteer"
+27415,erato,erato microclea Heliconius,,,microclea x luscombei,macho,Shima PER JU,,,m,1,10,1997,,FLMNH,,Neil Rosser,,-10.76666667,-73.73333333,"Gerardo Lamas, unpub. gazetteer"
+27416,erato,erato microclea Heliconius,,,microclea x luscombei,macho,Puyemi Rio PER JU,,,m,,10,1987,,FLMNH,,Neil Rosser,,-11.37562222,-73.83156944,Google Earth
+27417,erato,erato microclea Heliconius,,,microclea x luscombei,macho,Atalaya PER UC,450,450,m,,8,1996,,FLMNH,,Neil Rosser,,-10.73333333,-73.76666667,"Gerardo Lamas, unpub. gazetteer"
+27418,erato,erato microclea Heliconius,,,microclea x luscombei,macho,Puyemi Rio PER JU,,,m,,5,1988,,FLMNH,,Neil Rosser,,-11.37562222,-73.83156944,Google Earth
+27419,erato,erato microclea Heliconius,,,microclea x luscombei,macho,Atalaya PER UC,,,m,,1,1997,,FLMNH,,Neil Rosser,,-10.73333333,-73.76666667,"Gerardo Lamas, unpub. gazetteer"
+27420,erato,erato microclea Heliconius,,,microclea x luscombei,macho,Atalaya PER UC,450,450,m,,8,1996,,FLMNH,,Neil Rosser,,-10.73333333,-73.76666667,"Gerardo Lamas, unpub. gazetteer"
+27421,erato,erato microclea Heliconius,,,microclea x luscombei,macho,Atalaya PER UC,450,450,m,,8,1996,,FLMNH,,Neil Rosser,,-10.73333333,-73.76666667,"Gerardo Lamas, unpub. gazetteer"
+27422,erato,erato microclea Heliconius,,,microclea x luscombei,macho,Atalaya PER UC,450,450,m,,7,1996,,FLMNH,,Neil Rosser,,-10.73333333,-73.76666667,"Gerardo Lamas, unpub. gazetteer"
+27423,erato,erato microclea Heliconius,,,microclea x luscombei,macho,Atalaya PER UC,450,450,m,,10,1996,,FLMNH,,Neil Rosser,,-10.73333333,-73.76666667,"Gerardo Lamas, unpub. gazetteer"
+27424,erato,erato microclea Heliconius,,,microclea x luscombei,macho,Atalaya PER UC,450,450,m,,8,1996,,FLMNH,,Neil Rosser,,-10.73333333,-73.76666667,"Gerardo Lamas, unpub. gazetteer"
+27425,erato,erato microclea Heliconius,,,microclea x luscombei,macho,Atalaya PER UC,,,m,25,4,1996,,FLMNH,,Neil Rosser,,-10.73333333,-73.76666667,"Gerardo Lamas, unpub. gazetteer"
+27426,erato,erato microclea Heliconius,,,microclea x luscombei,hembra,Atalaya PER UC,450,450,m,,7,1996,,FLMNH,,Neil Rosser,,-10.73333333,-73.76666667,"Gerardo Lamas, unpub. gazetteer"
+36612,erato,erato microclea Heliconius,,,,desconocido,11-75a S,,,m,,,,,KB 1979,,NEIL ROSSER,,-10.75,-75.25,KB 1979
+37048,erato,erato microclea Heliconius,,,,desconocido,10-75b S,,,m,,,,,KB 1979,,NEIL ROSSER,,-9.75,-74.75,KB 1979
+37055,erato,erato microclea Heliconius,,,,desconocido,11-75b S,,,m,,,,,KB 1979,,NEIL ROSSER,,-10.75,-74.75,KB 1979
+37058,erato,erato microclea Heliconius,,,,desconocido,13-74b S,,,m,,,,,KB 1979,,NEIL ROSSER,,-12.75,-73.75,KB 1979
+37436,erato,erato microclea Heliconius,,,,desconocido,10-75c S,,,m,,,,,KB 1979,,NEIL ROSSER,,-10.25,-75.25,KB 1979
+37448,erato,erato microclea Heliconius,,,,desconocido,11-75c S,,,m,,,,,KB 1979,,NEIL ROSSER,,-11.25,-75.25,KB 1979
+37975,erato,erato microclea Heliconius,,,,desconocido,10-75d S,,,m,,,,,KB 1979,,NEIL ROSSER,,-10.25,-74.75,KB 1979
+37986,erato,erato microclea Heliconius,,,,desconocido,11-75d S,,,m,,,,,KB 1979,,NEIL ROSSER,,-11.25,-74.75,KB 1979
+42986,erato,erato microclea Heliconius,,,microclea x emma Heliconius. Ssp. NA - amended 1.12.09,macho,Cacazu PER PA,,,m,13,Abril,1981,"Hocking, P.",MHNL PERU,13.iv.81,Lidia Sulca,,-10.66666667,-75.11666667,"Gerardo Lamas, unpub. gazetteer"
+42987,erato,erato microclea Heliconius,,,microclea x emma Heliconius. Ssp. NA - amended 1.12.09,macho,Palcazu PER HU,,,m,12,Noviembre,1996,"Hocking, P.",MHNL PERU,12.xi.96,Lidia Sulca,,-9.883333333,-74.93333333,Brown
+42988,erato,erato microclea Heliconius,,,microclea x emma Heliconius. Ssp. NA - amended 1.12.09,macho,Jonatan Cerro PER PA,,,m,20,Julio,1992,"Hocking, P",MHNL PERU,20.vii.92,Lidia Sulca,,-10.25,-75.18333333,"Gerardo Lamas, unpub. gazetteer"
+42989,erato,erato microclea Heliconius,,,microclea x emma Heliconius. Ssp. NA - amended 1.12.09,macho,Palcazu PER HU,,,m,13,Mayo,1997,"Hocking, P.",MHNL PERU,13.v.97,Lidia Sulca,,-9.883333333,-74.93333333,Brown
+42990,erato,erato microclea Heliconius,,,microclea x emma Heliconius. Ssp. NA - amended 1.12.09,macho,Lobo PER PA,,,m,,Setiembre,1993,"Hocking, P",MHNL PERU,24-29.ix.93,Lidia Sulca,,-10.36666667,-75.25,"Gerardo Lamas, unpub. gazetteer"
+42992,erato,erato microclea Heliconius,,,microclea x emma Heliconius. Ssp. NA - amended 1.12.09,macho,Palcazu PER HU,,,m,12,Noviembre,1996,"Hocking, P.",MHNL PERU,12.xi.96,Lidia Sulca,,-9.883333333,-74.93333333,Brown
+42993,erato,erato microclea Heliconius,,,microclea x emma Heliconius. Ssp. NA - amended 1.12.09,macho,Palcazu PER HU,,,m,12,Noviembre,1996,"Hocking, P.",MHNL PERU,12.xi.96,Lidia Sulca,,-9.883333333,-74.93333333,Brown
+42994,erato,erato microclea Heliconius,,,,macho,Chuchurras PER PA,,,m,,,,,MHNL PERU,,Lidia Sulca,,-10.15,-75.23333333,"Gerardo Lamas, unpub. gazetteer"
+42995,erato,erato microclea Heliconius,,,,macho,Chuchurras PER PA,,,m,,,,,MHNL PERU,,Lidia Sulca,,-10.15,-75.23333333,"Gerardo Lamas, unpub. gazetteer"
+42996,erato,erato microclea Heliconius,,,,macho,Chuchurras PER PA,,,m,,,,,MHNL PERU,,Lidia Sulca,,-10.15,-75.23333333,"Gerardo Lamas, unpub. gazetteer"
+42997,erato,erato microclea Heliconius,,,,macho,Satipo PER JU,,,m,,,,Noriega,MHNL PERU,i.53,Lidia Sulca,,-11.25,-74.63333333,"Gerardo Lamas, unpub. gazetteer"
+42998,erato,erato microclea Heliconius,,,,macho,Perene Rio PER JU,,,m,,,,,MHNL PERU,,Lidia Sulca,,-11.15,-74.3,"Gerardo Lamas, unpub. gazetteer"
+42999,erato,erato microclea Heliconius,,,,macho,Puerto Union PER JU,,,m,8,Agosto,1975,"Lamas, G.",MHNL PERU,8.viii.75,Lidia Sulca,,-10.95,-75.21666667,"Gerardo Lamas, unpub. gazetteer"
+43000,erato,erato microclea Heliconius,,,,macho,Chanchamayo valle de PER JU,,,m,6,Agosto,1975,"Schunke, J.M.",MHNL PERU,6.viii.75,Lidia Sulca,,-11.05,-75.31666667,"Gerardo Lamas, unpub. gazetteer"
+43001,erato,erato microclea Heliconius,,,,macho,Chanchamayo valle de PER JU,,,m,13,Mayo,1975,"Schunke, J.M.",MHNL PERU,13.v.75,Lidia Sulca,,-11.05,-75.31666667,"Gerardo Lamas, unpub. gazetteer"
+43002,erato,erato microclea Heliconius,,,,macho,Chanchamayo valle de PER JU,,,m,18,Junio,1975,"Schunke, J.M.",MHNL PERU,18.vi.75,Lidia Sulca,,-11.05,-75.31666667,"Gerardo Lamas, unpub. gazetteer"
+43003,erato,erato microclea Heliconius,,,,macho,Chuchurras PER PA,,,m,,,,,MHNL PERU,,Lidia Sulca,,-10.15,-75.23333333,"Gerardo Lamas, unpub. gazetteer"
+43004,erato,erato microclea Heliconius,,,,macho,La Merced  PER JU,,,m,,Febrero,1951,"Blancas, F.",MHNL PERU,ii.51,Lidia Sulca,,-11.05,-75.31666667,"Gerardo Lamas, unpub. gazetteer"
+43006,erato,erato microclea Heliconius,,,,macho,Puerto Union PER JU,,,m,6,Agosto,1975,"Lamas, G.",MHNL PERU,6.viii.75,Lidia Sulca,,-10.95,-75.21666667,"Gerardo Lamas, unpub. gazetteer"
+43007,erato,erato microclea Heliconius,,,,macho,Chanchamayo valle de PER JU,,,m,10,Mayo,1974,"Schunke, J.M.",MHNL PERU,10.v.74,Lidia Sulca,,-11.05,-75.31666667,"Gerardo Lamas, unpub. gazetteer"
+43015,erato,erato microclea Heliconius,,,microclea x emma Heliconius. Ssp. NA - amended 1.12.09,macho,Paujil PER PA,,,m,10,Junio,1994,"Hocking, P.",MHNL PERU,10.vi.94,Lidia Sulca,,-10.33333333,-75.26666667,"Gerardo Lamas, unpub. gazetteer"

@@ -1,0 +1,85 @@
+unique_registros_ID,species,taxon_nombre,status_type,nombre_type,comentarios,sexo,localidad_codigo,elev_min_etiq,elev_max_etiq,elev_unidad,dia,mes,ano,colector,coleccion,fecha,digitador,duplicate,lat_dec,lon_dec,latlong_fuente
+1485,melpomene,melpomene thelxiopeia Heliconius,,,,descononcido,Maroni river 60 mi up FRG LM,,,m,,,,,KB 1979,,NEIL ROSSER,,4.807911111,-54.46801389,Google Earth
+5649,melpomene,melpomene thelxiopeia Heliconius,,,f. negroidens,macho,Paramaribo SUR PM,,,m,,,,,BMNH,,NEIL ROSSER,,5.833333333,-55.16666667,Brown
+5650,melpomene,melpomene thelxiopeia Heliconius,,,f. negroidens,hembra,Mapa Grande GUY,,,m,,,,,BMNH,,NEIL ROSSER,,,,unknown
+5651,melpomene,melpomene thelxiopeia Heliconius,,,f. aglaopeia,macho,Berg - en - Dal SUR BR,,,m,,7,,Michael,BMNH,,NEIL ROSSER,,5.15,-55.06666667,Brown
+5652,melpomene,melpomene thelxiopeia Heliconius,HT,"stygianus Heliconius melpomene (Heliconius, J.J. Joicey & W.J. Kaye 1917)",,macho,St Jean du Maroni FRG LM,,,m,,,,,BMNH,,NEIL ROSSER,,5.4,-54.08333333,Brown
+5653,melpomene,melpomene thelxiopeia Heliconius,,,f. stygianus,macho,Bas Maroni FRG LM,,,m,,,,,BMNH,,NEIL ROSSER,,5.25,-54.25,Brown 1979
+5654,melpomene,melpomene thelxiopeia Heliconius,,,f. stygianus,macho,St Laurent du Maroni FRG LM,,,m,,,1915,,BMNH,07-Sep,NEIL ROSSER,,5.5,-54.03333333,Brown
+5655,melpomene,melpomene thelxiopeia Heliconius,,,f. stygianus,macho,Nouveau Chantier FRG LM,,,m,,,,,BMNH,,NEIL ROSSER,,5.55,-53.93333333,Brown
+5656,melpomene,melpomene thelxiopeia Heliconius,,,f. stygianus,macho,Godebert - Maroni FRG,,,m,,,,,BMNH,,NEIL ROSSER,,5.516666667,-53.96666667,Geonames
+5657,melpomene,melpomene thelxiopeia Heliconius,,,f. aglaopeia,macho,Maroni Lower FRG,,,m,,,1920,,BMNH,08-Sep,NEIL ROSSER,,5.25,-54.25,Brown 1979
+5658,melpomene,melpomene thelxiopeia Heliconius,ST,"aglaopeia Heliconius melpomene (Heliconius, O. Staudinger 1897)",,macho,Cayenne FRG CY,,,m,,,,,BMNH,,NEIL ROSSER,,4.933333333,-52.33333333,Brown
+5665,melpomene,melpomene thelxiopeia Heliconius,,,"f. noctis (""athelia f. withiut red on FW - KB). See map notes",macho,Cayenne FRG CY,,,m,,,,Bar,BMNH,,NEIL ROSSER,,4.933333333,-52.33333333,Brown
+5666,melpomene,melpomene thelxiopeia Heliconius,,,"f. noctis (""athelia f. withiut red on FW - KB). See map notes",macho,Nouveau Chantier FRG LM,,,m,,,,,BMNH,,NEIL ROSSER,,5.55,-53.93333333,Brown
+5667,melpomene,melpomene thelxiopeia Heliconius,,,"f. noctis (""athelia f. withiut red on FW - KB). See map notes",macho,Bas Maroni FRG LM,,,m,,,,,BMNH,,NEIL ROSSER,,5.25,-54.25,Brown 1979
+5668,melpomene,melpomene thelxiopeia Heliconius,,,"f. noctis (""athelia f. withiut red on FW - KB). See map notes",macho,St Jean du Maroni FRG LM,,,m,,,,,BMNH,,NEIL ROSSER,,5.4,-54.08333333,Brown
+5669,melpomene,melpomene thelxiopeia Heliconius,,,"f. noctis (""athelia f. withiut red on FW - KB). See map notes",hembra,St Laurent du Maroni FRG LM,,,m,,,,,BMNH,,NEIL ROSSER,,5.5,-54.03333333,Brown
+5670,melpomene,melpomene thelxiopeia Heliconius,,,f. penelopides,macho,Guatimala FRG CY,,,m,,,,,BMNH,,NEIL ROSSER,,5.15,-52.63333333,Brown
+5671,melpomene,melpomene thelxiopeia Heliconius,,,f. with vestigial red and no yellow. -Note- originally entered as melpomene thelxiopeia? Heliconius,macho,St Jean du Maroni FRG LM,,,m,,,,,BMNH,,NEIL ROSSER,,5.4,-54.08333333,Brown
+5672,melpomene,melpomene thelxiopeia Heliconius,,,f. with vestigial red and no yellow. -Note- originally entered as melpomene thelxiopeia? Heliconius,macho,St Laurent du Maroni FRG LM,,,m,,,,,BMNH,,NEIL ROSSER,,5.5,-54.03333333,Brown
+5673,melpomene,melpomene thelxiopeia Heliconius,,,f. with vestigial red and no yellow. -Note- originally entered as melpomene thelxiopeia? Heliconius,macho,Godebert - Maroni FRG,,,m,,,,,BMNH,,NEIL ROSSER,,5.516666667,-53.96666667,Geonames
+5674,melpomene,melpomene thelxiopeia Heliconius,,,f. with vestigial red and no yellow. -Note- originally entered as melpomene thelxiopeia? Heliconius,macho,Nouveau Chantier FRG LM,,,m,,,,,BMNH,,NEIL ROSSER,,5.55,-53.93333333,Brown
+5675,melpomene,melpomene thelxiopeia Heliconius,,,f. with cloudy yellow patch and vestigial red. -Note- originally entered as melpomene thelxiopeia? Heliconius,macho,St Jean du Maroni FRG LM,,,m,,,,,BMNH,,NEIL ROSSER,,5.4,-54.08333333,Brown
+5676,melpomene,melpomene thelxiopeia Heliconius,,,f. with cloudy yellow patch and vestigial red. -Note- originally entered as melpomene thelxiopeia? Heliconius,macho,St Laurent du Maroni FRG LM,,,m,,,,,BMNH,,NEIL ROSSER,,5.5,-54.03333333,Brown
+5677,melpomene,melpomene thelxiopeia Heliconius,,,f. with cloudy yellow patch and vestigial red. -Note- originally entered as melpomene thelxiopeia? Heliconius,macho,Bas Maroni FRG LM,,,m,,,,,BMNH,,NEIL ROSSER,,5.25,-54.25,Brown 1979
+5678,melpomene,melpomene thelxiopeia Heliconius,,,f. with cloudy yellow patch and vestigial red. -Note- originally entered as melpomene thelxiopeia? Heliconius,macho,Nouveau Chantier FRG LM,,,m,,,,,BMNH,,NEIL ROSSER,,5.55,-53.93333333,Brown
+5679,melpomene,melpomene thelxiopeia Heliconius,,,f. negroidens,macho,Bas Maroni FRG LM,,,m,,,,,BMNH,,NEIL ROSSER,,5.25,-54.25,Brown 1979
+5680,melpomene,melpomene thelxiopeia Heliconius,,,thelxiopeia trans. to penelopides,macho,St Jean du Maroni FRG LM,,,m,,,,,BMNH,,NEIL ROSSER,,5.4,-54.08333333,Brown
+5681,melpomene,melpomene thelxiopeia Heliconius,,,thelxiopeia trans. to penelopides,macho,Bas Maroni FRG LM,,,m,,,,,BMNH,,NEIL ROSSER,,5.25,-54.25,Brown 1979
+5682,melpomene,melpomene thelxiopeia Heliconius,,,thelxiopeia trans. to penelopides,macho,St Laurent du Maroni FRG LM,,,m,,,,,BMNH,,NEIL ROSSER,,5.5,-54.03333333,Brown
+5683,melpomene,melpomene thelxiopeia Heliconius,,,thelxiopeia trans. athalia,macho,St Laurent du Maroni FRG LM,,,m,,,,,BMNH,,NEIL ROSSER,,5.5,-54.03333333,Brown
+5684,melpomene,melpomene thelxiopeia Heliconius,,,thelxiopeia trans. athalia,macho,St Jean du Maroni FRG LM,,,m,,,,,BMNH,,NEIL ROSSER,,5.4,-54.08333333,Brown
+5697,melpomene,melpomene thelxiopeia Heliconius,,,var. aglaopeia,macho,San Miguel Amazon Narrows,,,m,,,,,BMNH,,NEIL ROSSER,,,,unknown
+16270,melpomene,melpomene thelxiopeia Heliconius,,,,unknown,Cayenne 20km S FRG,,,m,,,,,FLMNH (not labelled) - Basement,,NEIL ROSSER,,4.773719444,-52.42611111,Google Earth
+16271,melpomene,melpomene thelxiopeia Heliconius,,,,unknown,Mariposula FRG,,,m,,,,,FLMNH (not labelled) - Basement,,NEIL ROSSER,,3.633333333,-54.03333333,Geonames
+16272,melpomene,melpomene thelxiopeia Heliconius,,,,unknown,Mariposula 15km NE FRG,,,m,,,,,FLMNH (not labelled) - Basement,,NEIL ROSSER,,3.702919444,-53.96270556,Google Earth
+16273,melpomene,melpomene thelxiopeia Heliconius,,,,unknown,Cacao - Cayenne 5km S after the junction FRG,,,m,,,,,FLMNH (not labelled) - Basement,,NEIL ROSSER,,4.737380556,-52.40823889,Google Earth
+16274,melpomene,melpomene thelxiopeia Heliconius,,,,unknown,Cacao FRG CY,,,m,,,,,FLMNH (not labelled) - Basement,,NEIL ROSSER,,4.583333333,-52.46666667,Label
+16275,melpomene,melpomene thelxiopeia Heliconius,,,hybrid form stygianus,unknown,Cacao FRG CY,,,m,,,,,FLMNH (not labelled) - Basement,,NEIL ROSSER,,4.583333333,-52.46666667,Label
+24669,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,macho,St Laurent du Maroni FRG LM,,,m,,,,,FLMNH,,Neil Rosser,,5.5,-54.03333333,Brown
+24670,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,macho,St Laurent du Maroni FRG LM,,,m,,,1935,,FLMNH,,Neil Rosser,,5.5,-54.03333333,Brown
+24671,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,macho,Kourou FRG CY,,,m,,9,1990,,FLMNH,,Neil Rosser,,5.15,-52.65,Geonames
+24674,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,hembra,St Laurent du Maroni FRG LM,,,m,,,1935,,FLMNH,,Neil Rosser,,5.5,-54.03333333,Brown
+24675,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,macho,St Laurent du Maroni FRG LM,,,m,,,,,FLMNH,,Neil Rosser,,5.5,-54.03333333,Brown
+24676,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,macho,St Laurent du Maroni FRG LM,,,m,,,,,FLMNH,,Neil Rosser,,5.5,-54.03333333,Brown
+24677,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,hembra,St Laurent du Maroni FRG LM,,,m,,,,,FLMNH,,Neil Rosser,,5.5,-54.03333333,Brown
+24678,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,macho,St Laurent du Maroni FRG LM,,,m,,,,,FLMNH,,Neil Rosser,,5.5,-54.03333333,Brown
+24679,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,macho,St Laurent du Maroni FRG LM,,,m,,,,,FLMNH,,Neil Rosser,,5.5,-54.03333333,Brown
+24681,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,macho,Village Galibi FRG LM,,,m,15,5,1988,,FLMNH,,Neil Rosser,,5.4,-54.11666667,Geonames
+24682,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,macho,Roura Fourgassiou FRG,,,m,28,8,1977,,FLMNH,,Neil Rosser,,4.675036111,-52.31536389,Google Earth
+24684,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,macho,St Laurent du Maroni FRG LM,,,m,,,1935,,FLMNH,,Neil Rosser,,5.5,-54.03333333,Brown
+24685,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,hembra,Guatimala FRG CY,,,m,,,,,FLMNH,,Neil Rosser,,5.15,-52.63333333,Brown
+24686,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,macho,Zanderij - Colakreek SUR PA,,,m,12,5,1989,,FLMNH,,Neil Rosser,,5.516666667,-55.23333333,Geonames
+24687,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,macho,St Laurent du Maroni FRG LM,,,m,,,,,FLMNH,,Neil Rosser,,5.5,-54.03333333,Brown
+24688,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,macho,St Laurent du Maroni FRG LM,,,m,,,,,FLMNH,,Neil Rosser,,5.5,-54.03333333,Brown
+24689,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,hembra,Nouveau Chantier FRG LM,,,m,,,,,FLMNH,,Neil Rosser,,5.55,-53.93333333,Brown
+24691,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,macho,Bas Maroni FRG LM,,,m,,,,,FLMNH,,Neil Rosser,,5.25,-54.25,Brown 1979
+24692,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,hembra,Kourou FRG CY,,,m,,9,1990,,FLMNH,,Neil Rosser,,5.15,-52.65,Geonames
+24694,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,macho,Bas Maroni FRG LM,,,m,,,,,FLMNH,,Neil Rosser,,5.25,-54.25,Brown 1979
+24695,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,macho,Bas Maroni FRG LM,,,m,,,,,FLMNH,,Neil Rosser,,5.25,-54.25,Brown 1979
+24698,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,hembra,Guatimala FRG CY,,,m,,,,,FLMNH,,Neil Rosser,,5.15,-52.63333333,Brown
+24699,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,macho,Bas Maroni FRG LM,,,m,,,,,FLMNH,,Neil Rosser,,5.25,-54.25,Brown 1979
+24700,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Taxon_nombre originall entered as melpomene thelxiope - assumed error.,macho,Guatimala FRG CY,,,m,,,,,FLMNH,,Neil Rosser,,5.15,-52.63333333,Brown
+33035,melpomene,melpomene thelxiopeia Heliconius,,,,unknown,Riv. Comt� Br. FRG,,,m,,,,,Brower,,NEIL ROSSER,,4.659638889,-52.35480833,Google Earth
+34319,melpomene,melpomene thelxiopeia Heliconius,,,,descononcido,Amapari Alto Rio BRA AP,,,m,,,,,KB 1979,,NEIL ROSSER,,1.25,-52.25,KB 1979
+34760,melpomene,melpomene thelxiopeia Heliconius,,,,desconocido,5-54a N,,,m,,,,,KB 1979,,NEIL ROSSER,,5.25,-54.25,KB 1979
+34769,melpomene,melpomene thelxiopeia Heliconius,,,,desconocido,5-53a N,,,m,,,,,KB 1979,,NEIL ROSSER,,5.25,-53.25,KB 1979
+34782,melpomene,melpomene thelxiopeia Heliconius,,,,desconocido,5-55a N,,,m,,,,,KB 1979,,NEIL ROSSER,,5.25,-55.25,KB 1979
+34791,melpomene,melpomene thelxiopeia Heliconius,,,,desconocido,3-54a N,,,m,,,,,KB 1979,,NEIL ROSSER,,3.25,-54.25,KB 1979
+35238,melpomene,melpomene thelxiopeia Heliconius,,,,desconocido,5-54b N,,,m,,,,,KB 1979,,NEIL ROSSER,,5.25,-53.75,KB 1979
+35248,melpomene,melpomene thelxiopeia Heliconius,,,,desconocido,5-53b N,,,m,,,,,KB 1979,,NEIL ROSSER,,5.25,-52.75,KB 1979
+35252,melpomene,melpomene thelxiopeia Heliconius,,,,desconocido,3-54b N,,,m,,,,,KB 1979,,NEIL ROSSER,,3.25,-53.75,KB 1979
+35781,melpomene,melpomene thelxiopeia Heliconius,,,,desconocido,6-54c N,,,m,,,,,KB 1979,,NEIL ROSSER,,5.75,-54.25,KB 1979
+35797,melpomene,melpomene thelxiopeia Heliconius,,,,desconocido,5-52c N,,,m,,,,,KB 1979,,NEIL ROSSER,,4.75,-52.25,KB 1979
+35804,melpomene,melpomene thelxiopeia Heliconius,,,,desconocido,4-54c N,,,m,,,,,KB 1979,,NEIL ROSSER,,3.75,-54.25,KB 1979
+35813,melpomene,melpomene thelxiopeia Heliconius,,,,desconocido,6-55c N,,,m,,,,,KB 1979,,NEIL ROSSER,,5.75,-55.25,KB 1979
+36030,melpomene,melpomene thelxiopeia Heliconius,,,,desconocido,4-51c N,,,m,,,,,KB 1979,,NEIL ROSSER,,3.75,-51.25,KB 1979
+36059,melpomene,melpomene thelxiopeia Heliconius,,,,desconocido,1-51c N,,,m,,,,,KB 1979,,NEIL ROSSER,,0.75,-51.25,KB 1979
+36186,melpomene,melpomene thelxiopeia Heliconius,,,,desconocido,6-54d N,,,m,,,,,KB 1979,,NEIL ROSSER,,5.75,-53.75,KB 1979
+36193,melpomene,melpomene thelxiopeia Heliconius,,,,desconocido,4-54d N,,,m,,,,,KB 1979,,NEIL ROSSER,,3.75,-53.75,KB 1979
+36202,melpomene,melpomene thelxiopeia Heliconius,,,,desconocido,4-52d N,,,m,,,,,KB 1979,,NEIL ROSSER,,3.75,-51.75,KB 1979
+36459,melpomene,melpomene thelxiopeia Heliconius,,,,desconocido,1-52d N,,,m,,,,,KB 1979,,NEIL ROSSER,,0.75,-51.75,KB 1979
+38744,melpomene,melpomene thelxiopeia Heliconius,,,,desconocido,Maripasoula FRG LM,,,m,,,,,MHNL PERU ex Peru,,NEIL ROSSER,,3.683333333,-54.03333333,Brown
+38745,melpomene,melpomene thelxiopeia Heliconius,,,melpomene x thelxiopeia. Subsp NA - amended 1.12.09,desconocido,St Georges FRG CY,,,m,,,,,MHNL PERU ex Peru,,NEIL ROSSER,,3.883333333,-51.81666667,Brown
+52251,melpomene,melpomene thelxiopeia Heliconius,ST,"seraphini Heliconius (Heliconius, G. Talbot 1932)",Hybrid - numata numata x melopomene thelxiopeia,macho,St Laurent du Maroni FRG LM,,,m,,,,,BMNH,,NEIL ROSSER,duplicate,5.5,-54.03333333,Brown

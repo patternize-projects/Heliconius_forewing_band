@@ -149,13 +149,13 @@ IDList_hydP  <- c('IMG_1855','IMG_1861','IMG_1859','IMG_1863','IMG_1869','IMG_18
 IDList_dem   <- c('IMG_1960','IMG_1972','IMG_1974','IMG_1978','IMG_1980','IMG_1982','IMG_1987','IMG_2049','IMG_2125','IMG_2135','IMG_2141')
 IDList_phy   <- c('6_MARA','10_MARA','35_SAG','49_SAG','52_SAG','85_IG','112_BOQ2','114_BOQ2','10428488','10428490')
 IDList_cyr   <- c('CAM040321','CAM040354','CAM040355','CAM040356','CAM040357','CAM040361','CAM040362','CAM040363','CAM040364','CAM040365')
-IDList_ven   <- c('CS000046','CS000047','CS000265','CS000275','CS000278','CS000284','CS000286','CS000288','CS003656','CS003659','10428490')
+IDList_ven   <- c('CS000046','CS000047','CS000265','CS000275','CS000278','CS000284','CS000286','CS000288','CS003656','CS003659')
 IDList_amal  <- c('BC2108','BC2146','BC2168','BC2181','BC2184','BC2187','BC2193','BC2223','BC2227','BC2351')
 IDList_mic   <- c('10428928','10428929','10428930','10428931','10428932','10428934','10428935','10428936','10428937','10428941')
 
 # H. melpomene
 IDList_the  <- c('10428329','10428331','10428332','10428333','10428334','10428335','10428336','10428337','10428338','10428339','10428340','10428341','10428342','10428343')
-IDList_mal  <- c('CAM016144','CAM016267','CAM016609','CAM016610','CAM016611','CAM017049','CAM017064','CAM017070','10428198','10428199') #'CAM017030','CAM017120'
+IDList_mal  <- c('CAM016144','CAM016267','CAM016609','CAM016610','CAM016611','CAM017049','CAM017064','CAM017070','CAM016224','CAM016606','CAM016772')#,'10428198','10428199') #'CAM017030','CAM017120'
 IDList_ecu  <- c('CAM009120','CAM009141','CAM009112','CAM009113','CAM009114','CAM009115','CAM009119','10428219','10428220') # these are faded, but we can extract them with different color values
 IDList_amar  <- c('MJ12.3137','MJ12.3371','MJ12.3392','MJ12.3393','MJ12.3396','MJ12.3414','MJ12.3416','MJ12.3417','MJ12.3442','10428116','BC2639') # 'MJ12.3306'
 IDList_cyt  <- c('15N005','15N006','15N009','15N020','15N022','15N023','CAM008510_d','CAM040383_d','CAM040459_d','CAM040474_d')
@@ -394,37 +394,37 @@ dev.off()
 
 # All 18 landmarks
 transformed_mean_E <- transformed$rotated[,,1]
-transformed_mean_M <- transformed$rotated[,,142]
+transformed_mean_M <- transformed$rotated[,,141]
 for(i in 1:18){
-  for(e in 2:141){
+  for(e in 2:140){
     transformed_mean_E[i,1] <- transformed_mean_E[i,1] + transformed$rotated[,,e][i,1]
     transformed_mean_E[i,2] <- transformed_mean_E[i,2] + transformed$rotated[,,e][i,2]
   }
-  for(m in 143:281){
+  for(m in 142:281){
     transformed_mean_M[i,1] <- transformed_mean_M[i,1] + transformed$rotated[,,m][i,1]
     transformed_mean_M[i,2] <- transformed_mean_M[i,2] + transformed$rotated[,,m][i,2]
   }
 }
 
-transformed_mean_E <- transformed_mean_E/141
-transformed_mean_M <- transformed_mean_M/140
+transformed_mean_E <- transformed_mean_E/140
+transformed_mean_M <- transformed_mean_M/141
 
 # Subset landmarks
 transformed_mean_E_sub <- transformed_sub$rotated[,,1]
-transformed_mean_M_sub <- transformed_sub$rotated[,,142]
+transformed_mean_M_sub <- transformed_sub$rotated[,,141]
 for(i in 1:9){
-  for(e in 2:141){
+  for(e in 2:140){
     transformed_mean_E_sub[i,1] <- transformed_mean_E_sub[i,1] + transformed_sub$rotated[,,e][i,1]
     transformed_mean_E_sub[i,2] <- transformed_mean_E_sub[i,2] + transformed_sub$rotated[,,e][i,2]
   }
-  for(m in 143:281){
+  for(m in 142:281){
     transformed_mean_M_sub[i,1] <- transformed_mean_M_sub[i,1] + transformed_sub$rotated[,,m][i,1]
     transformed_mean_M_sub[i,2] <- transformed_mean_M_sub[i,2] + transformed_sub$rotated[,,m][i,2]
   }
 }
 
-transformed_mean_E_sub <- transformed_mean_E_sub/141
-transformed_mean_M_sub <- transformed_mean_M_sub/140
+transformed_mean_E_sub <- transformed_mean_E_sub/140
+transformed_mean_M_sub <- transformed_mean_M_sub/141
 
 
 ############################
