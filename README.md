@@ -7,7 +7,8 @@ Analysis and figure code for
 
 Steven M. Van Belleghem, Paola A. Alicea Roman, Heriberto Carbia Gutierrez, Brian A. Counterman and Riccardo Papa
 
-For questions, please email Steven M. Van Belleghem (vanbelleghemsteven@hotmail.com) and/or Paola A. Alicea Roman (paola.alicea4@upr.edu)
+
+For questions, please email Steven M. Van Belleghem (vanbelleghemsteven@hotmail.com) and/or Paola A. Alicea Roman (paola.alicea4@upr.edu).
 
 
 ### Requirements:
