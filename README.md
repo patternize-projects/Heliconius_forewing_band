@@ -33,17 +33,17 @@ install.packages("ggplot2", "maps", "mapdata", "plyr", "alphahull", "G1DBN", "ge
 
 <i>Plot_distributions.R</i> - Script to plot distributions of <i>H. erato/H. melpomene</i>.
 
-<i>patternize_erato.R</i> - Script to extract color patterns using all 18 landmarks <i>H. erato</i>.
-<i>patternize_erato_sub.R</i> - Script to extract color patterns using subset landmarks <i>H. erato</i>.
-<i>patternize_melpomene.R</i> - Script to extract color patterns using all 18 landmarks <i>H. melpomene</i>.
-<i>patternize_melpomene_sub.R</i> - Script to extract color patterns using subset landmarks <i>H. melpomene</i>.
+<i>patternize_erato.R</i> - Script to extract color patterns using all 18 landmarks <i>H. erato</i>.\n
+<i>patternize_erato_sub.R</i> - Script to extract color patterns using subset landmarks <i>H. erato</i>.\n
+<i>patternize_melpomene.R</i> - Script to extract color patterns using all 18 landmarks <i>H. melpomene</i>.\n
+<i>patternize_melpomene_sub.R</i> - Script to extract color patterns using subset landmarks <i>H. melpomene</i>.\n
 
-<i>plot_Heatmaps_comimics.R</i> - Script to plot comparisons color patterns <i>H. erato/H. melpomene</i> using all 18 landmarks.
-<i>plot_Heatmaps_comimics_sub.R</i> - Script to plot comparisons color patterns <i>H. erato/H. melpomene</i> using subset landmarks.
-<i>plot_Heatmaps_comimics_sub_male.R</i> - Script to plot comparisons color patterns <i>H. erato/H. melpomene</i> using subset landmarks and only male samples.
+<i>plot_Heatmaps_comimics.R</i> - Script to plot comparisons color patterns <i>H. erato/H. melpomene</i> using all 18 landmarks.\n
+<i>plot_Heatmaps_comimics_sub.R</i> - Script to plot comparisons color patterns <i>H. erato/H. melpomene</i> using subset landmarks.\n
+<i>plot_Heatmaps_comimics_sub_male.R</i> - Script to plot comparisons color patterns <i>H. erato/H. melpomene</i> using subset landmarks and only male samples.\n
 
-<i>plot_PCA.R</i> - Script to plot PCA of color patterns <i>H. erato/H. melpomene</i> using all 18 landmarks.
-<i>plot_PCA_sub.R</i> - Script to plot PCA of color patterns <i>H. erato/H. melpomene</i> using subset landmarks.
+<i>plot_PCA.R</i> - Script to plot PCA of color patterns <i>H. erato/H. melpomene</i> using all 18 landmarks.\n
+<i>plot_PCA_sub.R</i> - Script to plot PCA of color patterns <i>H. erato/H. melpomene</i> using subset landmarks.\n
 
 <i>plot_mutant_comparison.R</i> - Script to compare color patterns <i>H. e. demophoon/H. m. rosina</i> to WntA mutant phenotypes (using subset landmarks).
 
