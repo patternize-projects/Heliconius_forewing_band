@@ -128,8 +128,11 @@ load('aligned_rasterLists/rasterList_vul_M_sub.rda')
 load('aligned_rasterLists/rasterList_the_M_sub.rda')
 load('aligned_rasterLists/rasterList_xen_M_sub.rda')
 
+# cartoon
+outline_BC0004 <- read.table('cartoon/BC0004_outline.txt', h = F)
+lines_BC0004 <- list.files(path ='cartoon', pattern ='BC0004_vein', full.names = T)
 
-
+###
 IDList_list_E <- list(IDList_hydFG, IDList_hydP, IDList_dem, IDList_ven, IDList_fav,  IDList_phy, IDList_cyr, IDList_lat, IDList_emm, IDList_ety, IDList_not, IDList_mic, IDList_amal, IDList_era)
 IDList_list_M <- list(IDList_melFG, IDList_melP, IDList_ros, IDList_vul, IDList_amar, IDList_nan, IDList_cyt, IDList_mal, IDList_agl, IDList_ecu, IDList_ple, IDList_xen, IDList_mer, IDList_the)
 
@@ -164,12 +167,18 @@ for(e in 1:length(IDList_list_E)){
            imageList = imageList_list_E[[e]], cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under',
            colpalette = colfunc, legend = F)
   # text(1787.333,1998, substitute(paste(italic(nn), ' French Guyana'), list(nn='H. e. hydara')), cex=1, adj=0)
-  
-  plotHeat(summedRaster_M_M_sub_m, IDList_list_M[[e]], plotCartoon = TRUE, refShape = 'target', 
+  areaE <- patArea(rasterList_list_E[[e]], IDList_list_E[[e]], refShape = 'target', outline = outline_BC0004, type = 'RGB',
+                   cartoonID = 'BC0004', landList = landList_list_E[[e]], adjustCoords = TRUE, imageList = imageList_list_E[[e]])
+  text(1950,1650, substitute(paste(nn,' ± ',ss), list(nn=round(mean(areaE$Area), 2), ss=round(sd(areaE$Area), 2))), cex = 12, srt = 45)
+ 
+   plotHeat(summedRaster_M_M_sub_m, IDList_list_M[[e]], plotCartoon = TRUE, refShape = 'target', 
            outline = outline_BC0004, lines = lines_BC0004, landList = landList_list_M[[e]], adjustCoords = TRUE, 
            imageList = imageList_list_M[[e]], cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under',
            colpalette = colfunc, legend = F)
   # text(1787.333,1998, substitute(paste(italic(nn), ' French Guyana'), list(nn='H. m. melpomene')), cex=1, adj=0)
+  areaM <- patArea(rasterList_list_M[[e]], IDList_list_M[[e]], refShape = 'target', outline = outline_BC0004, type = 'RGB',
+                   cartoonID = 'BC0004', landList = landList_list_M[[e]], adjustCoords = TRUE, imageList = imageList_list_M[[e]])
+  text(1950,1650, substitute(paste(nn,' ± ',ss), list(nn=round(mean(areaM$Area), 2), ss=round(sd(areaM$Area), 2))), cex = 12, srt = 45)
   
   colfunc <- c("blue","lightblue","black","burlywood1","orange")
   raster_diff <- summedRaster_E_M_sub_m/length(IDList_list_E[[e]]) - summedRaster_M_M_sub_m/length(IDList_list_M[[e]])
@@ -177,5 +186,34 @@ for(e in 1:length(IDList_list_E)){
            lines = lines_BC0004, landList = landList_list_E[[e]], adjustCoords = TRUE, imageList = imageList_list_E[[e]], 
            cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc, normalized = T, 
            zlim = c(-1,1), legendTitle = "", legend = F)
+  
+  # calculate area outline
+    rasterEx <- raster::extent(raster_diff)
+  rRe <- raster::raster(nrow=200,ncol=200)
+  raster::extent(rRe) <- rasterEx
+  newRaster <- raster::resample(raster_diff, rRe)
+  
+  poly <- sp::Polygons(list(sp::Polygon(outline_BC0004)),paste("r"))
+  
+  polyList  <- c(poly)
+  polyNames <- c(paste("r"))
+  sr=sp::SpatialPolygons(polyList)
+  srdf=sp::SpatialPolygonsDataFrame(sr, data.frame(1:length(polyNames), row.names=polyNames))
+  
+  r <- raster::raster(rasterEx, nrow=dim(newRaster)[1], ncol=dim(newRaster)[2])
+  rr <-raster::rasterize(srdf, r)
+  
+  nrCellsOutline  <- raster::freq(rr, value=1)
+  
+  # calculate area difference (normailized for average difference)
+  df <- abs(raster::as.data.frame(raster_diff))
+  
+  df2 <- subset(df, df$layer != 0)
+  
+  AvDiff <- sum(df$layer)/nrCellsOutline
+  sdDiff <- (sd(df$layer)*nrow(df2))/nrCellsOutline
+  
+  text(1950,1650, substitute(paste(nn,' ± ',ss), list(nn=round(AvDiff, 2), ss=round(sdDiff, 2))), cex = 12, srt = 45)
+  
 }
 dev.off()
