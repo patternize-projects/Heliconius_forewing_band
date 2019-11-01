@@ -188,7 +188,7 @@ for(e in 1:length(IDList_list_E)){
            zlim = c(-1,1), legendTitle = "", legend = F)
   
   # calculate area outline
-    rasterEx <- raster::extent(raster_diff)
+  rasterEx <- raster::extent(raster_diff)
   rRe <- raster::raster(nrow=200,ncol=200)
   raster::extent(rRe) <- rasterEx
   newRaster <- raster::resample(raster_diff, rRe)
@@ -214,6 +214,9 @@ for(e in 1:length(IDList_list_E)){
   sdDiff <- (sd(df$layer)*nrow(df2))/nrCellsOutline
   
   text(1950,1650, substitute(paste(nn,' ± ',ss), list(nn=round(AvDiff, 2), ss=round(sdDiff, 2))), cex = 12, srt = 45)
+  
+  ttest <- t.test(areaE$Area,areaM$Area)
+  print(c(round(mean(areaE$Area), 4), round(mean(areaM$Area), 4), round(ttest$p.value,4)))
   
 }
 dev.off()
