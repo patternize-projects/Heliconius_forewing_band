@@ -216,7 +216,7 @@ for(e in 1:length(IDList_list_E)){
   text(1950,1650, substitute(paste(nn,' ± ',ss), list(nn=round(AvDiff, 2), ss=round(sdDiff, 2))), cex = 12, srt = 45)
   
   ttest <- t.test(areaE$Area,areaM$Area)
-  print(c(round(mean(areaE$Area), 4), round(mean(areaM$Area), 4), round(ttest$p.value,4)))
+  print(c(round(mean(areaE$Area), 4), round(mean(areaM$Area), 4), round(ttest$p.value,4), round(AvDiff, 2)))
   
 }
 dev.off()
