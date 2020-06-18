@@ -1,4 +1,5 @@
 library(RColorBrewer)
+library(patternize)
 
 # H. erato
 IDList_era   <- c('BC0147','BC0148','BC0149','BC0154','BC0163','BC0198','BC0200','BC0327','BC0340','BC0351')
@@ -31,6 +32,53 @@ IDList_ple  <- c('CAM016347','CAM016349','CAM016354','CAM016355','CAM016378','CA
 IDList_ros  <- c('CAM000903','CAM000947','CAM001015','CAM001027','CAM001067', 'CAM001137','CAM001391','CAM002901','CAM008052','CAM009554')
 IDList_vul  <- c('CAM000058','CAM000059','CAM000060','CAM000061','CAM000062','CAM000063','CAM000064','CAM000129','CAM000132','CAM000134')
 IDList_xen  <- c('MJ12.3606','MJ12.3608','MJ12.3636','MJ12.3638','MJ12.3647','MJ12.3648','MJ12.3651','MJ12.3653')
+
+# Landmarks
+landList_hydP <- makeList(IDList_hydP, 'landmark', 'landmarks/H.e.hydaraP', '_LFW_landmarks.txt', skipLandmark = c(2:5,7:9))
+landList_hydFG <- makeList(IDList_hydFG, 'landmark', 'landmarks/H.e.hydaraFG', '_landmarks_LFW.txt', skipLandmark = c(2:5,7:9))
+landList_amal <- makeList(IDList_amal, 'landmark', 'landmarks/H.e.amalfreda', '-D.txt', skipLandmark = c(2:5,7:9))
+landList_cyr <- makeList(IDList_cyr, 'landmark', 'landmarks/H.e.cyrbia', '_d_LFW_landmarks.txt', skipLandmark = c(2:5,7:9))
+landList_not <- makeList(IDList_not, 'landmark', 'landmarks/H.e.notabilis', '_d_landmarks.txt', skipLandmark = c(2:5,7:9))
+landList_ety <- makeList(IDList_ety, 'landmark', 'landmarks/H.e.etylus', '_d_LFW_landmarks.txt', skipLandmark = c(2:5,7:9))
+landList_fav <- makeList(IDList_fav, 'landmark', 'landmarks/H.e.favorinus', '_d_LFW_landmarks.txt', skipLandmark = c(2:5,7:9))
+landList_ven <- makeList(IDList_ven, 'landmark', 'landmarks/H.e.venus', '_d_LFW_landmarks.txt', skipLandmark = c(2:5,7:9))
+landList_era <- makeList(IDList_era, 'landmark', 'landmarks/H.e.erato', '_landmarks_LFW.txt', skipLandmark = c(2:5,7:9))
+landList_emm <- makeList(IDList_emm, 'landmark', 'landmarks/H.e.emma', '_d_LFW_landmarks.txt', skipLandmark = c(2:5,7:9))
+landList_phy <- makeList(IDList_phy, 'landmark', 'landmarks/H.e.phyllis', '_calibrated_D_LFW_landmarks.txt', skipLandmark = c(2:5,7:9))
+landList_dem <- makeList(IDList_dem, 'landmark', 'landmarks/H.e.demophoon', '_LFW_landmarks.txt', skipLandmark = c(2:5,7:9))
+landList_lat <- makeList(IDList_lat, 'landmark', 'landmarks/H.e.lativitta', '_d_landmarks.txt', skipLandmark = c(2:5,7:9))
+landList_mic <- makeList(IDList_mic, 'landmark', 'landmarks/H.e.microclea', '_D_butterfly_landmarks.txt', skipLandmark = c(2:5,7:9))
+
+# images
+imageList_hydP <- makeList(IDList_hydP, 'image', 'images/H.e.hydaraP', '-D.JPG')
+imageList_hydFG <- makeList(IDList_hydFG, 'image', 'images/H.e.hydaraFG', '-D.JPG')
+imageList_amal <- makeList(IDList_amal, 'image', 'images/H.e.amalfreda', '-D.JPG')
+imageList_cyr <- makeList(IDList_cyr, 'image', 'images/H.e.cyrbia', '_d.JPG')
+imageList_not <- makeList(IDList_not, 'image', 'images/H.e.notabilis', '_d.JPG')
+imageList_ety <- makeList(IDList_ety, 'image', 'images/H.e.etylus', '_d.JPG')
+imageList_fav <- makeList(IDList_fav, 'image', 'images/H.e.favorinus', '_d.JPG')
+imageList_ven <- makeList(IDList_ven, 'image', 'images/H.e.venus', '_d.JPG')
+imageList_era <- makeList(IDList_era, 'image', 'images/H.e.erato', '-D.JPG')
+imageList_emm <- makeList(IDList_emm, 'image', 'images/H.e.emma', '_d.JPG')
+imageList_phy <- makeList(IDList_phy, 'image', 'images/H.e.phyllis', '_calibrated_D.JPG')
+imageList_dem <- makeList(IDList_dem, 'image', 'images/H.e.demophoon', '.JPG')
+imageList_lat <- makeList(IDList_lat, 'image', 'images/H.e.lativitta', '_d.JPG')
+imageList_mic <- makeList(IDList_mic, 'image', 'images/H.e.microclea', '_D_butterfly.JPEG')
+
+imageList <- c(imageList_hydP,
+               imageList_hydFG,
+               imageList_amal,
+               imageList_cyr,
+               imageList_not,
+               imageList_ety,
+               imageList_fav,
+               imageList_ven,
+               imageList_era,
+               imageList_emm,
+               imageList_phy,
+               imageList_dem,
+               imageList_lat,
+               imageList_mic)
 
 ########################################################
 ### load of rasters
@@ -81,6 +129,11 @@ target <- as.matrix(read.table('cartoon/BC0004_landmarks_LFW.txt',h = F))
 outline_BC0004 <- read.table('cartoon/BC0004_outline.txt', h = F)
 lines_BC0004 <- list.files(path ='cartoon', pattern ='BC0004_vein', full.names = T)
 
+########################################################
+sexTable <- read.table('landmarks/sex_table_PCA.txt', h=T)
+sexTable$Image.ID <- gsub('_calibrated', '', sexTable$Image.ID)
+head(sexTable) 
+########################################################
 
 par(mar=c(4,4,1,1), oma=c(0,0,0,0))
 ######################################################
@@ -103,9 +156,77 @@ pcaOut <- patPCA(TotalList_era, popList_era, colbli_palette, symbolList = symbol
                  imageList = imageList, cartoonID = 'BC0004', normalized = TRUE, cartoonFill = 'black', 
                  cartoonOrder = 'under', legendTitle = 'Predicted', colpalette = colfunc)
 
+### Stat analysis
+# Run permutation to evaluate significance of PC axes
+library(jackstraw)
+matr <- t(pcaOut[[1]])
+out <- pcaOut[[3]]
+plot(out$x[,c(1,2)])
+permutationPA(matr, B=100)
+
+pca_sign <- out$x[,c(1:10)]
+
+summ <- summary(out)
+summ$importance[2,c(1:10)]
+
+# Create groups list
+popList <- popList_era
+pop <- c('hydP', 'hydFG', 'dem', 'ven', 'cyr', 'lat', 'emm', 'not', 'ety', 'fav', 'phy', 'amal', 'era', 'mic')
+
+group <- c()
+for(p in 1:length(popList)){
+  for(ind in 1:length(popList[[p]])){
+    group <- rbind(group, c(pop[p], as.character(sexTable[match(popList[[p]][ind], sexTable$Image.ID),][1,2])))
+  }
+}
+
+group <- as.data.frame(group)
+colnames(group) <- c('pop','sex')
+
+# Run MANOVA
+res.man <- manova(pca_sign ~ group$pop*group$sex)
+summ1 <- summary(res.man)
+summ2 <- summary.aov(res.man)
+
+aov_table <- c()
+for(e in 1:length(summ2)){
+  aov_table <- rbind(aov_table, c(summ2[[e]]$`F value`[2], summ2[[e]]$`Pr(>F)`[2]))
+}
+
+aov_table
+
+# Run LDA and posterior classification
+library(MASS)
+ldaOut <- lda(x = pca_sign, grouping = as.character(group$pop), CV = TRUE)
+
+class_mat <- ldaOut$posterior >=.5
+
+class_table <- c()
+for(e in 1:length(pop)){
+  class_vec <- class_mat[, pop[e]]
+  class_true <- class_vec[which(as.character(group$pop) %in% pop[e])]
+  class_rate <- sum(class_true)/length(class_true)*100
+  class_table <- rbind(class_table, c(pop[e], round(class_rate,2)))
+}
+as.data.frame(class_table)
+
+
+ldaOut <- lda(x = pca_sign, grouping = as.character(group$sex), CV = TRUE, prior=c(0.5,0.5))
+
+class_mat <- ldaOut$posterior >=.5
+
+sexes <- c('m','f')
+class_table <- c()
+for(e in 1:length(sexes)){
+  class_vec <- class_mat[, sexes[e]]
+  class_true <- class_vec[which(as.character(group$sex) %in% sexes[e])]
+  class_rate <- sum(class_true)/length(class_true)*100
+  class_table <- rbind(class_table, c(sexes[e], round(class_rate,2)))
+}
+as.data.frame(class_table)
 
 ########################################################
-#PCA for H. melpomene 
+# PCA for H. melpomene 
 ########################################################
 # Make population and color list
 popList_mel <- list(IDList_melP,IDList_melFG, IDList_ros,  IDList_vul, IDList_cyt, IDList_mal, IDList_agl, 
@@ -127,6 +248,74 @@ pcaOut <- patPCA(TotalList_mel, popList_mel, colbli_palette, symbolList = symbol
                  imageList = imageList, cartoonID = 'BC0004', normalized = TRUE, cartoonFill = 'black',
                  cartoonOrder = 'under', legendTitle = 'Predicted', colpalette = colfunc)
  
+### Stat analysis
+# Run permutation to evaluate significance of PC axes
+library(jackstraw)
+matr <- t(pcaOut[[1]])
+out <- pcaOut[[3]]
+plot(out$x[,c(1,2)])
+permutationPA(matr, B=100)
+
+pca_sign <- out$x[,c(1:11)]
+
+summ <- summary(out)
+summ$importance[2,c(1:11)]
+
+# Create groups list
+popList <- popList_mel
+pop <- c('melP', 'melFG', 'ros', 'vul', 'cyt', 'mal', 'agl', 'ple', 'ecu',  'amar', 'nan', 'mer', 'the', 'xen')
+
+group <- c()
+for(p in 1:length(popList)){
+  for(ind in 1:length(popList[[p]])){
+    group <- rbind(group, c(pop[p], as.character(sexTable[match(popList[[p]][ind], sexTable$Image.ID),][1,2])))
+  }
+}
+
+group <- as.data.frame(group)
+colnames(group) <- c('pop','sex')
+
+# Run MANOVA
+res.man <- manova(pca_sign ~ group$pop*group$sex)
+summ1 <- summary(res.man)
+summ2 <- summary.aov(res.man)
+
+aov_table <- c()
+for(e in 1:length(summ2)){
+  aov_table <- rbind(aov_table, c(summ2[[e]]$`F value`[2], summ2[[e]]$`Pr(>F)`[2]))
+}
+
+aov_table
+
+# Run LDA and posterior classification
+library(MASS)
+ldaOut <- lda(x = pca_sign, grouping = as.character(group$pop), CV = TRUE)
+
+class_mat <- ldaOut$posterior >=.5
+
+class_table <- c()
+for(e in 1:length(pop)){
+  class_vec <- class_mat[, pop[e]]
+  class_true <- class_vec[which(as.character(group$pop) %in% pop[e])]
+  class_rate <- sum(class_true)/length(class_true)*100
+  class_table <- rbind(class_table, c(pop[e], round(class_rate,2)))
+}
+as.data.frame(class_table)
+
+
+ldaOut <- lda(x = pca_sign, grouping = as.character(group$sex), CV = TRUE, prior=c(0.5,0.5))
+
+class_mat <- ldaOut$posterior >=.5
+
+sexes <- c('m','f')
+class_table <- c()
+for(e in 1:length(sexes)){
+  class_vec <- class_mat[, sexes[e]]
+  class_true <- class_vec[which(as.character(group$sex) %in% sexes[e])]
+  class_rate <- sum(class_true)/length(class_true)*100
+  class_table <- rbind(class_table, c(sexes[e], round(class_rate,2)))
+}
+as.data.frame(class_table)
 
 ########################################################
 ###PCA for H. erato and H. melpomene 
@@ -153,6 +342,71 @@ pcaOut <- patPCA(TotalList_mel_era, popList_mel_era, colList_mel_era, symbolList
                  cartoonOrder = 'under', legendTitle = 'Predicted', colpalette = colfunc)
 dev.off()
 
+### Stat analysis
+# Run permutation to evaluate significance of PC axes
+library(jackstraw)
+matr <- t(pcaOut[[1]])
+out <- pcaOut[[3]]
+plot(out$x[,c(1,2)])
+permutationPA(matr, B=100)
+
+pca_sign <- out$x[,c(1:18)]
+
+summ <- summary(out)
+summ$importance[2,c(1:18)]
+
+# Create groups list
+popList1 <- popList_era
+popList2 <- popList_mel
+
+pop1 <- c('hydP', 'hydFG', 'dem', 'ven', 'cyr', 'lat', 'emm', 'not', 'ety', 'fav', 'phy', 'amal', 'era', 'mic')
+pop2 <- c('melP', 'melFG', 'ros', 'vul', 'cyt', 'mal', 'agl', 'ple', 'ecu',  'amar', 'nan', 'mer', 'the', 'xen')
+pop <- c(pop1, pop2)
+
+group <- c()
+for(p in 1:length(popList1)){
+  for(ind in 1:length(popList1[[p]])){
+    group <- rbind(group, c(pop1[p], "erato"))
+  }
+}
+for(p in 1:length(popList2)){
+  for(ind in 1:length(popList2[[p]])){
+    group <- rbind(group, c(pop2[p], "melp"))
+  }
+}
+
+group <- as.data.frame(group)
+colnames(group) <- c('pop', 'spec')
+
+# Run MANOVA
+dat <- data.frame(pca_sign, group)
+res.man <- manova(as.matrix(dat[,c(1:18)]) ~ dat$spec*dat$pop)
+summ1 <- summary(res.man)
+summ2 <- summary.aov(res.man)
+
+aov_table <- c()
+for(e in 1:length(summ2)){
+  aov_table <- rbind(aov_table, c(summ2[[e]]$`F value`[1], summ2[[e]]$`Pr(>F)`[1]))
+}
+
+aov_table
+
+# Run LDA and posterior classification
+library(MASS)
+ldaOut <- lda(x = pca_sign, grouping = as.character(group$spec), CV = TRUE)
+
+class_mat <- ldaOut$posterior >=.5
+
+species <- c('erato', 'melp')
+class_table <- c()
+for(e in 1:length(species)){
+  class_vec <- class_mat[, species[e]]
+  class_true <- class_vec[which(as.character(group$spec) %in% species[e])]
+  class_rate <- sum(class_true)/length(class_true)*100
+  class_table <- rbind(class_table, c(species[e], round(class_rate,2)))
+}
+as.data.frame(class_table)
+
 # ###############################################
 # # Postman PCA for H.erato
 # ###############################################
@@ -165,8 +419,7 @@ dev.off()
 colbli_palette <- c("#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C", "#6A3D9A", "#67001F") 
 
 
-popList_era <- list(IDList_hydP, IDList_hydFG, IDList_dem, IDList_ven,
-                    IDList_fav, IDList_phy)
+popList_era <- list(IDList_hydP, IDList_hydFG, IDList_dem, IDList_ven, IDList_fav, IDList_phy)
 
 symbolList_era <- c(1,1,1,1,1,1)
 
@@ -184,7 +437,7 @@ pcaOut <- patPCA(TotalList_era, popList_era, colbli_palette, symbolList = symbol
 #PCA for H. melpomene 
 ########################################################
 # Make population and color list
-popList_mel <- list(IDList_melP, IDList_melFG, IDList_ros,  IDList_vul, IDList_amar, IDList_nan)
+popList_mel <- list(IDList_melP, IDList_melFG, IDList_ros, IDList_vul, IDList_amar, IDList_nan)
 
 symbolList_mel <- c(16,16,16,16,16,16)
 
@@ -226,3 +479,68 @@ pcaOut <- patPCA(TotalList_mel_era, popList_mel_era, colList_mel_era, symbolList
 dev.off()
 
 save(pcaOut, file = "aligned_rasterLists/pcaOut_postman_sub.rda")
+
+### Stat analysis
+# Run permutation to evaluate significance of PC axes
+library(jackstraw)
+matr <- t(pcaOut[[1]])
+out <- pcaOut[[3]]
+plot(out$x[,c(1,2)])
+permutationPA(matr, B=100)
+
+pca_sign <- out$x[,c(1:15)]
+
+summ <- summary(out)
+summ$importance[2,c(1:15)]
+
+# Create groups list
+popList1 <- popList_era
+popList2 <- popList_mel
+
+pop1 <- c('hydP', 'hydFG', 'dem', 'ven', 'fav', 'phy')
+pop2 <- c('melP', 'melFG', 'ros', 'vul', 'amar', 'nan')
+pop <- c(pop1, pop2)
+
+group <- c()
+for(p in 1:length(popList1)){
+  for(ind in 1:length(popList1[[p]])){
+    group <- rbind(group, c(pop1[p], "erato"))
+  }
+}
+for(p in 1:length(popList2)){
+  for(ind in 1:length(popList2[[p]])){
+    group <- rbind(group, c(pop2[p], "melp"))
+  }
+}
+
+group <- as.data.frame(group)
+colnames(group) <- c('pop', 'spec')
+
+# Run MANOVA
+dat <- data.frame(pca_sign, group)
+res.man <- manova(as.matrix(dat[,c(1:15)]) ~ dat$spec*dat$pop)
+summ1 <- summary(res.man)
+summ2 <- summary.aov(res.man)
+
+aov_table <- c()
+for(e in 1:length(summ2)){
+  aov_table <- rbind(aov_table, c(summ2[[e]]$`F value`[1], summ2[[e]]$`Pr(>F)`[1]))
+}
+
+aov_table
+
+# Run LDA and posterior classification
+library(MASS)
+ldaOut <- lda(x = pca_sign, grouping = as.character(group$spec), CV = TRUE)
+
+class_mat <- ldaOut$posterior >=.5
+
+species <- c('erato', 'melp')
+class_table <- c()
+for(e in 1:length(species)){
+  class_vec <- class_mat[, species[e]]
+  class_true <- class_vec[which(as.character(group$spec) %in% species[e])]
+  class_rate <- sum(class_true)/length(class_true)*100
+  class_table <- rbind(class_table, c(species[e], round(class_rate,2)))
+}
+as.data.frame(class_table)

@@ -185,8 +185,8 @@ save(rasterList_ple_sub, file = 'aligned_rasterLists/rasterList_ple_sub.rda')
 
 # rosina
 RGB <- c(224,102,37) 
-rasterList_ros_sub <- patLanRGB(imageList_ros, landList_ros, RGB, transformRef = target, resampleFactor = 3,
-                                colOffset = 0.2, crop = FALSE, res = 200, adjustCoords = TRUE, plot = 'stack',
+rasterList_ros_sub <- patLanRGB(imageList_ros, landList_ros, RGB, transformRef = target, resampleFactor = 5,
+                                colOffset = 0.2, crop = FALSE, res = 150, adjustCoords = TRUE, plot = 'stack',
                                 iteration = 3)
 save(rasterList_ros_sub, file = 'aligned_rasterLists/rasterList_ros_sub.rda')
 
@@ -414,7 +414,7 @@ plotHeat(summedRaster_ple_M, IDList_ple, plotCartoon = TRUE, refShape = 'target'
          cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc)
 
 plotHeat(summedRaster_ros_M, IDList_ros, plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
-         lines = lines_BC0004, landList = landList_ros, adjustCoords = TRUE, imageList = imageList_ros, 
+         lines = lines_BC0004, landList = landList_ros, adjustCoords = TRUE, imageList = imageList_hydFG, 
          cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc)
 
 plotHeat(summedRaster_vul_M, IDList_vul, plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 

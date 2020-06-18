@@ -1,5 +1,5 @@
 library(patternize)
-library(viridis)
+library(RColorBrewer)
 
 # H. erato
 IDList_era   <- c('BC0147','BC0148','BC0149','BC0154','BC0163','BC0198','BC0200','BC0327','BC0340','BC0351')
@@ -161,30 +161,30 @@ for(e in 1:length(IDList_list_E)){
   
   summedRaster_M_M_m <- sumRaster(rasterList_list_M[[e]], IDList_list_M[[e]], type = 'RGB')
   
-  colfunc <- inferno(100)
+  colfunc <- colorRampPalette(brewer.pal(9,'Blues'))(100)[100:1]
   plotHeat(summedRaster_E_M_m, IDList_list_E[[e]], plotCartoon = TRUE, refShape = 'target', 
            outline = outline_BC0004, lines = lines_BC0004, landList = landList_list_E[[e]], adjustCoords = TRUE, 
-           imageList = imageList_list_E[[e]], cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under',
+           imageList = imageList_hydFG, cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under',
            colpalette = colfunc, legend = F)
   # text(1787.333,1998, substitute(paste(italic(nn), ' French Guyana'), list(nn='H. e. hydara')), cex=1, adj=0)
   areaE <- patArea(rasterList_list_E[[e]], IDList_list_E[[e]], refShape = 'target', outline = outline_BC0004, type = 'RGB',
                    cartoonID = 'BC0004', landList = landList_list_E[[e]], adjustCoords = TRUE, imageList = imageList_list_E[[e]])
-  text(1950,1650, substitute(paste(nn,' Â± ',ss), list(nn=round(mean(areaE$Area), 2), ss=round(sd(areaE$Area), 2))), cex = 12, srt = 45)
+  text(1950,1650, substitute(paste(nn,' ± ',ss), list(nn=round(mean(areaE$Area), 2), ss=round(sd(areaE$Area), 2))), cex = 12, srt = 45)
   
   
   plotHeat(summedRaster_M_M_m, IDList_list_M[[e]], plotCartoon = TRUE, refShape = 'target', 
            outline = outline_BC0004, lines = lines_BC0004, landList = landList_list_M[[e]], adjustCoords = TRUE, 
-           imageList = imageList_list_M[[e]], cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under',
+           imageList = imageList_hydFG, cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under',
            colpalette = colfunc, legend = F)
   # text(1787.333,1998, substitute(paste(italic(nn), ' French Guyana'), list(nn='H. m. melpomene')), cex=1, adj=0)
   areaM <- patArea(rasterList_list_M[[e]], IDList_list_M[[e]], refShape = 'target', outline = outline_BC0004, type = 'RGB',
                    cartoonID = 'BC0004', landList = landList_list_M[[e]], adjustCoords = TRUE, imageList = imageList_list_M[[e]])
-  text(1950,1650, substitute(paste(nn,' Â± ',ss), list(nn=round(mean(areaM$Area), 2), ss=round(sd(areaM$Area), 2))), cex = 12, srt = 45)
+  text(1950,1650, substitute(paste(nn,' ± ',ss), list(nn=round(mean(areaM$Area), 2), ss=round(sd(areaM$Area), 2))), cex = 12, srt = 45)
   
   colfunc <- c("blue","lightblue","black","burlywood1","orange")
   raster_diff <- summedRaster_E_M_m/length(IDList_list_E[[e]]) - summedRaster_M_M_m/length(IDList_list_M[[e]])
   plotHeat(raster_diff, IDList_list_E[[e]], plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
-           lines = lines_BC0004, landList = landList_list_E[[e]], adjustCoords = TRUE, imageList = imageList_list_E[[e]], 
+           lines = lines_BC0004, landList = landList_list_E[[e]], adjustCoords = TRUE, imageList = imageList_hydFG, 
            cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc, normalized = T, 
            zlim = c(-1,1), legendTitle = "", legend = F)
   
@@ -214,6 +214,6 @@ for(e in 1:length(IDList_list_E)){
   AvDiff <- sum(df$layer)/nrCellsOutline
   sdDiff <- (sd(df$layer)*nrow(df2))/nrCellsOutline
   
-  text(1950,1650, substitute(paste(nn,' Â± ',ss), list(nn=round(AvDiff, 2), ss=round(sdDiff, 2))), cex = 12, srt = 45)
+  text(1950,1650, substitute(paste(nn,' ± ',ss), list(nn=round(AvDiff, 2), ss=round(sdDiff, 2))), cex = 12, srt = 45)
 }
 dev.off()

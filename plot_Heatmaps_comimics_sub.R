@@ -1,5 +1,6 @@
 library(patternize)
-library(viridis)
+library(RColorBrewer)
+library(distributions3)
 
 # H. erato
 IDList_era   <- c('BC0147','BC0148','BC0149','BC0154','BC0163','BC0198','BC0200','BC0327','BC0340','BC0351')
@@ -149,11 +150,25 @@ rasterList_list_M <- list(rasterList_melFG_M_sub, rasterList_melP_M_sub, rasterL
 
 
 #figure creation 
-png('comparison_subset_noNames.png', width=4000, height=11200)
-layout(matrix(c(1:42), nrow=14, byrow=TRUE))
+png('comparison_subset_noNames.png', width=5500, height=11200)
+layout(matrix(c(1:56), nrow=14, byrow=TRUE))
 # layout.show(n=21)
-par(mar=c(0,0,0,0), oma=c(0,3,0,3))
+par(mar=c(0,0,0,0), oma=c(0,12,0,3), xpd = NA)
 
+
+load('aligned_rasterLists/rasterList_mutDem_sub.rda')
+load('aligned_rasterLists/rasterList_mutRos_sub_M.rda')
+
+summedRaster_mutDem_sub <- sumRaster(rasterList_mutDem_sub, IDList_mutDem, type = 'RGB')
+summedRaster_mutRos_sub_M <- sumRaster(rasterList_mutRos_sub_M, IDList_mutRos, type = 'RGB')
+
+summedRaster_mutDem_sub_int <- summedRaster_mutDem_sub
+summedRaster_mutDem_sub_int[summedRaster_mutDem_sub_int < 5] <- 0
+summedRaster_mutDem_sub_int[summedRaster_mutDem_sub_int >= 5] <- 1
+
+summedRaster_mutRos_sub_int <- summedRaster_mutRos_sub_M
+summedRaster_mutRos_sub_int[summedRaster_mutRos_sub_int < 5] <- 0
+summedRaster_mutRos_sub_int[summedRaster_mutRos_sub_int >= 5] <- 1
 
 for(e in 1:length(IDList_list_E)){
 
@@ -161,29 +176,29 @@ for(e in 1:length(IDList_list_E)){
   
   summedRaster_M_M_sub_m <- sumRaster(rasterList_list_M[[e]], IDList_list_M[[e]], type = 'RGB')
   
-  colfunc <- inferno(100)
+  colfunc <- colorRampPalette(brewer.pal(9,'Blues'))(100)[100:1]
   plotHeat(summedRaster_E_M_sub_m, IDList_list_E[[e]], plotCartoon = TRUE, refShape = 'target', 
            outline = outline_BC0004, lines = lines_BC0004, landList = landList_list_E[[e]], adjustCoords = TRUE, 
-           imageList = imageList_list_E[[e]], cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under',
+           imageList = imageList_hydFG, cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under',
            colpalette = colfunc, legend = F)
   # text(1787.333,1998, substitute(paste(italic(nn), ' French Guyana'), list(nn='H. e. hydara')), cex=1, adj=0)
   areaE <- patArea(rasterList_list_E[[e]], IDList_list_E[[e]], refShape = 'target', outline = outline_BC0004, type = 'RGB',
-                   cartoonID = 'BC0004', landList = landList_list_E[[e]], adjustCoords = TRUE, imageList = imageList_list_E[[e]])
-  text(1950,1650, substitute(paste(nn,' ± ',ss), list(nn=round(mean(areaE$Area), 2), ss=round(sd(areaE$Area), 2))), cex = 12, srt = 45)
+                   cartoonID = 'BC0004', landList = landList_list_E[[e]], adjustCoords = TRUE, imageList = imageList_hydFG)
+  text(1900,1650, substitute(paste(nn,' ± ',ss), list(nn=round(mean(areaE$Area), 2), ss=round(sd(areaE$Area), 2))), cex = 18, srt = 45)
  
    plotHeat(summedRaster_M_M_sub_m, IDList_list_M[[e]], plotCartoon = TRUE, refShape = 'target', 
            outline = outline_BC0004, lines = lines_BC0004, landList = landList_list_M[[e]], adjustCoords = TRUE, 
-           imageList = imageList_list_M[[e]], cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under',
+           imageList = imageList_hydFG, cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under',
            colpalette = colfunc, legend = F)
   # text(1787.333,1998, substitute(paste(italic(nn), ' French Guyana'), list(nn='H. m. melpomene')), cex=1, adj=0)
   areaM <- patArea(rasterList_list_M[[e]], IDList_list_M[[e]], refShape = 'target', outline = outline_BC0004, type = 'RGB',
                    cartoonID = 'BC0004', landList = landList_list_M[[e]], adjustCoords = TRUE, imageList = imageList_list_M[[e]])
-  text(1950,1650, substitute(paste(nn,' ± ',ss), list(nn=round(mean(areaM$Area), 2), ss=round(sd(areaM$Area), 2))), cex = 12, srt = 45)
+  text(1900,1650, substitute(paste(nn,' ± ',ss), list(nn=round(mean(areaM$Area), 2), ss=round(sd(areaM$Area), 2))), cex = 18, srt = 45)
   
   colfunc <- c("blue","lightblue","black","burlywood1","orange")
   raster_diff <- summedRaster_E_M_sub_m/length(IDList_list_E[[e]]) - summedRaster_M_M_sub_m/length(IDList_list_M[[e]])
   plotHeat(raster_diff, IDList_list_E[[e]], plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
-           lines = lines_BC0004, landList = landList_list_E[[e]], adjustCoords = TRUE, imageList = imageList_list_E[[e]], 
+           lines = lines_BC0004, landList = landList_list_E[[e]], adjustCoords = TRUE, imageList = imageList_hydFG, 
            cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc, normalized = T, 
            zlim = c(-1,1), legendTitle = "", legend = F)
   
@@ -213,10 +228,26 @@ for(e in 1:length(IDList_list_E)){
   AvDiff <- sum(df$layer)/nrCellsOutline
   sdDiff <- (sd(df$layer)*nrow(df2))/nrCellsOutline
   
-  text(1950,1650, substitute(paste(nn,' ± ',ss), list(nn=round(AvDiff, 2), ss=round(sdDiff, 2))), cex = 12, srt = 45)
+  # calculate the z-statistic
+  t_stat <- (AvDiff - 0) / (sdDiff / sqrt((length(IDList_list_E[[e]])+length(IDList_list_M[[e]]))/2))
+  
+  T_dist <- StudentsT(df = (length(IDList_list_E[[e]])+length(IDList_list_M[[e]]))/2 -1)  # make a T_df distribution
+  
+  p_val <- 1 - cdf(T_dist, t_stat) + cdf(T_dist, -t_stat)
+  ##
+  
+  text(1900,1650, substitute(paste(nn,' ? ',ss), list(nn=round(AvDiff, 2), ss=round(sdDiff, 2))), cex = 18, srt = 45)
+  
+  plotHeat(raster_diff, IDList_list_E[[e]], plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
+           lines = lines_BC0004, landList = landList_list_E[[e]], adjustCoords = TRUE, imageList = imageList_hydFG, 
+           cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc, normalized = T, 
+           zlim = c(-1,1), legendTitle = "", legend = F)
+  
+  raster::contour(summedRaster_mutDem_sub_int, add=T, col = 'green', lwd=15, maxpixels=5000, nlevels=1)
+  raster::contour(summedRaster_mutRos_sub_int, add=T, col = 'yellow', lwd=15, maxpixels=5000, nlevels=1)
   
   ttest <- t.test(areaE$Area,areaM$Area)
-  print(c(round(mean(areaE$Area), 4), round(mean(areaM$Area), 4), round(ttest$p.value,4), round(AvDiff, 2)))
+  print(c(round(mean(areaE$Area), 4), round(mean(areaM$Area), 4), round(ttest$p.value,4), round(AvDiff, 4), round(sdDiff, 4), p_val))
   
 }
 dev.off()

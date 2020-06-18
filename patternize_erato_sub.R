@@ -17,7 +17,7 @@ IDList_ven   <- c('CS000046','CS000047','CS000265','CS000275','CS000278','CS0002
 IDList_amal  <- c('BC2108','BC2146','BC2168','BC2181','BC2184','BC2187','BC2193','BC2223','BC2227','BC2351')
 IDList_mic   <- c('10428928','10428929','10428930','10428931','10428932','10428934','10428935','10428936','10428937','10428941')
 
-# All 18 landmarks
+# Landmarks
 landList_hydP <- makeList(IDList_hydP, 'landmark', 'landmarks/H.e.hydaraP', '_LFW_landmarks.txt', skipLandmark = c(2:5,7:9))
 landList_hydFG <- makeList(IDList_hydFG, 'landmark', 'landmarks/H.e.hydaraFG', '_landmarks_LFW.txt', skipLandmark = c(2:5,7:9))
 landList_amal <- makeList(IDList_amal, 'landmark', 'landmarks/H.e.amalfreda', '-D.txt', skipLandmark = c(2:5,7:9))
@@ -291,6 +291,42 @@ rasterList_amal_M_sub <-list()
 for(e in IDList_amal){
   rasterList_amal_M_sub[[e]] <- maskOutline(rasterList_amal_sub[[e]], mask_amal, refShape = 'target', 
                                        imageList = imageList_amal)
+}
+
+# setMask(summedRaster_lat_M_sub, IDList_lat, cartoonID = 'BC0004', 'mask/mask_lat.txt', imageList = imageList_hydFG)
+
+mask_lat <- read.table("mask/mask_lat.txt", h=T)
+rasterList_lat_M_sub <-list()
+for(e in IDList_lat){
+  rasterList_lat_M_sub[[e]] <- maskOutline(rasterList_lat_sub[[e]], mask_lat, refShape = 'target', 
+                                            imageList = imageList_lat)
+}
+
+# setMask(summedRaster_emm_M_sub, IDList_emm, cartoonID = 'BC0004', 'mask/mask_emm.txt', imageList = imageList_hydFG)
+
+mask_emm <- read.table("mask/mask_emm.txt", h=T)
+rasterList_emm_M_sub <-list()
+for(e in IDList_emm){
+  rasterList_emm_M_sub[[e]] <- maskOutline(rasterList_emm_sub[[e]], mask_emm, refShape = 'target', 
+                                           imageList = imageList_emm)
+}
+
+# setMask(summedRaster_ety_M_sub, IDList_ety, cartoonID = 'BC0004', 'mask/mask_ety.txt', imageList = imageList_hydFG)
+
+mask_ety <- read.table("mask/mask_ety.txt", h=T)
+rasterList_ety_M_sub <-list()
+for(e in IDList_ety){
+  rasterList_ety_M_sub[[e]] <- maskOutline(rasterList_ety_sub[[e]], mask_ety, refShape = 'target', 
+                                           imageList = imageList_ety)
+}
+
+# setMask(summedRaster_not_M_sub, IDList_not, cartoonID = 'BC0004', 'mask/mask_not.txt', imageList = imageList_hydFG)
+
+mask_not <- read.table("mask/mask_not.txt", h=T)
+rasterList_not_M_sub <-list()
+for(e in IDList_not){
+  rasterList_not_M_sub[[e]] <- maskOutline(rasterList_not_sub[[e]], mask_not, refShape = 'target', 
+                                           imageList = imageList_not)
 }
 
 ###

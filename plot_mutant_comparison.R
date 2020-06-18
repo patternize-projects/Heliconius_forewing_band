@@ -1,5 +1,30 @@
 library(patternize)
 library(viridis)
+library(RColorBrewer)
+
+###
+# Load some necessary data
+###
+
+IDList_hydFG <- c('BC0004','BC0049','BC0050','BC0061','BC0071','BC0076','BC0077','BC0079','BC0082','BC0125')
+IDList_dem   <- c('IMG_1960','IMG_1972','IMG_1974','IMG_1978','IMG_1980','IMG_1982','IMG_1987','IMG_2049','IMG_2125','IMG_2135','IMG_2141')
+IDList_ros  <- c('CAM000903','CAM000947','CAM001015','CAM001027','CAM001067', 'CAM001137','CAM001391','CAM002901','CAM008052','CAM009554')
+
+landList_dem <- makeList(IDList_dem, 'landmark', 'landmarks/H.e.demophoon', '_LFW_landmarks.txt', skipLandmark = c(2:5,7:9))
+landList_hydFG <- makeList(IDList_hydFG, 'landmark', 'landmarks/H.e.hydaraFG', '_landmarks_LFW.txt', skipLandmark = c(2:5,7:9))
+landList_ros <- makeList(IDList_ros, 'landmark', 'landmarks/H.m.rosina', '_d.txt', skipLandmark = c(2:5,7:9))
+
+imageList_dem <- makeList(IDList_dem, 'image', 'images/H.e.demophoon', '.JPG')
+imageList_hydFG <- makeList(IDList_hydFG, 'image', 'images/H.e.hydaraFG', '-D.JPG')
+imageList_ros <- makeList(IDList_ros, 'image', 'images/H.m.rosina', '_d.JPG')
+
+load('aligned_rasterLists/rasterList_dem_M_sub.rda')
+load('aligned_rasterLists/rasterList_ros_M_sub.rda')
+
+summedRaster_dem_sub_m <- sumRaster(rasterList_dem_M_sub, IDList_dem, type = 'RGB')
+summedRaster_ros_sub_m <- sumRaster(rasterList_ros_M_sub, IDList_ros, type = 'RGB')
+
+
 
 ###
 # Run patternize for mutants
@@ -7,6 +32,7 @@ library(viridis)
 
 IDList_mutDem  <- c('EratoDem_mut9_LDFW','EratoDem_mut9_RDFW','EratoDem_mut11_LDFW','EratoDem_mut11_RDFW','MU4_DLFW','MU4_DRFW','MU5_DLFW','MU5_DRFW','MU6_DLFW','MU6_DRFW')
 IDList_mutRos <- c('Hmr_mut1_DRFW','Hmr_mut2_DLFW','Hmr_mut2_DRFW','Hmr_mut3_DLFW','Hmr_mut3_DRFW','Hmr_mut4_DLFW','Hmr_mut4_DRFW','rosina_mut_dfw','Rosina-mutant-FK1-1','Rosina-mutant-FK1-2')
+
 
 IDlist <- c('WOM7998_RDFW')
 library("jpeg")
@@ -87,14 +113,111 @@ load('aligned_rasterLists/rasterList_mutRos_sub_M.rda')
 summedRaster_mutDem_sub <- sumRaster(rasterList_mutDem_sub, IDList_mutDem, type = 'RGB')
 summedRaster_mutRos_sub_M <- sumRaster(rasterList_mutRos_sub_M, IDList_mutRos, type = 'RGB')
 
-colfunc <- inferno(100)
-plotHeat(summedRaster_mutDem_sub, IDList_mutDem, plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
-         lines = lines_BC0004, landList = landList_mutDem, adjustCoords = TRUE, imageList = imageList_mutDem, 
-         cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc)
+summedRaster_mutDem_sub_int <- summedRaster_mutDem_sub
+summedRaster_mutDem_sub_int[summedRaster_mutDem_sub_int < 5] <- 0
+summedRaster_mutDem_sub_int[summedRaster_mutDem_sub_int >= 5] <- 1
 
+summedRaster_mutRos_sub_int <- summedRaster_mutRos_sub_M
+summedRaster_mutRos_sub_int[summedRaster_mutRos_sub_int < 5] <- 0
+summedRaster_mutRos_sub_int[summedRaster_mutRos_sub_int >= 5] <- 1
+
+# colfunc <- inferno(100)
+colfunc <- colorRampPalette(brewer.pal(9,'Blues'))(100)[100:1]
+plotHeat(summedRaster_mutDem_sub, IDList_mutDem, plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
+         lines = lines_BC0004, landList = landList_mutDem, adjustCoords = TRUE, imageList = imageList_hydFG, 
+         cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc, legend = F)
+
+raster::contour(summedRaster_mutRos_sub_int, add=T, col = 'yellow', lwd=3, maxpixels=5000, nlevels=1)
+
+
+plotHeat(summedRaster_dem_sub_m, IDList_dem, plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004,
+         lines = lines_BC0004, landList = landList_dem, adjustCoords = TRUE, imageList = imageList_hydFG,
+         cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc, legend = F)
+
+colfunc <- c("blue","lightblue","black","burlywood1","orange")
+raster_diff <- summedRaster_mutDem_sub/length(IDList_mutDem) - summedRaster_dem_sub_m/length(IDList_dem)
+
+plotHeat(raster_diff, IDList_mutDem, plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
+         lines = lines_BC0004, landList = landList_mutDem, adjustCoords = TRUE, imageList = imageList_hydFG, 
+         cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc, normalized = T, 
+         zlim = c(-1,1), legendTitle = "", legend = F)
+
+raster_diff_min0 <- raster::calc(raster_diff, function(x){x[x<0]<-0; return(x)})
+
+plotHeat(raster_diff_min0, IDList_mutDem, plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
+         lines = lines_BC0004, landList = landList_mutDem, adjustCoords = TRUE, imageList = imageList_hydFG, 
+         cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc, normalized = T, 
+         zlim = c(-1,1), legendTitle = "", legend = F)
+
+
+colfunc <- colorRampPalette(brewer.pal(9,'Blues'))(100)[100:1]
 plotHeat(summedRaster_mutRos_sub_M, IDList_mutRos, plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
-         lines = lines_BC0004, landList = landList_mutRos, adjustCoords = TRUE, imageList = imageList_mutRos, 
-         cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc)
+         lines = lines_BC0004, landList = landList_mutRos, adjustCoords = TRUE, imageList = imageList_hydFG, 
+         cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc, legend = F)
+
+raster::contour(summedRaster_mutDem_sub_int, add=T, col = 'green', lwd=3, maxpixels=5000, nlevels=1)
+
+
+plotHeat(summedRaster_ros_sub_m, IDList_ros, plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004,
+         lines = lines_BC0004, landList = landList_ros, adjustCoords = TRUE, imageList = imageList_hydFG,
+         cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc, legend = F)
+
+colfunc <- c("blue","lightblue","black","burlywood1","orange")
+raster_diff <- summedRaster_mutRos_sub_M/length(IDList_mutRos) - summedRaster_ros_sub_m/length(IDList_ros)
+
+plotHeat(raster_diff, IDList_mutRos, plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
+         lines = lines_BC0004, landList = landList_mutRos, adjustCoords = TRUE, imageList = imageList_hydFG, 
+         cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc, normalized = T, 
+         zlim = c(-1,1), legendTitle = "", legend = F)
+
+raster_diff_min0 <- raster::calc(raster_diff, function(x){x[x<0]<-0; return(x)})
+
+### Calculation of area of wing impacted
+# setMask(raster_diff, IDList_mutRos, colpalette = colfunc, zlim = c(-1,1), normalized = T, 'mask/mask_mut1.txt')
+# setMask(raster_diff, IDList_mutRos, colpalette = colfunc, zlim = c(-1,1), normalized = T, 'mask/mask_mut2.txt')
+
+mask_mut2 <- read.table("mask/mask_mut2.txt", h=T)
+
+raster_diff_M <- maskOutline(raster_diff, mask_mut2, refShape = 'target', 
+                                            imageList = imageList_hydFG)
+
+plotHeat(raster_diff_M, IDList_mutRos, plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
+         lines = lines_BC0004, landList = landList_mutRos, adjustCoords = TRUE, imageList = imageList_hydFG, 
+         cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc, normalized = T, 
+         zlim = c(-1,1), legendTitle = "", legend = F)
+
+raster_diff_min0 <- raster::calc(raster_diff_M, function(x){x[x<0]<-0; return(x)})
+
+
+
+##
+# calculate area outline
+rasterEx <- raster::extent(raster_diff)
+rRe <- raster::raster(nrow=200,ncol=200)
+raster::extent(rRe) <- rasterEx
+newRaster <- raster::resample(raster_diff_min0, rRe)
+
+poly <- sp::Polygons(list(sp::Polygon(outline_BC0004)),paste("r"))
+
+polyList  <- c(poly)
+polyNames <- c(paste("r"))
+sr=sp::SpatialPolygons(polyList)
+srdf=sp::SpatialPolygonsDataFrame(sr, data.frame(1:length(polyNames), row.names=polyNames))
+
+r <- raster::raster(rasterEx, nrow=dim(newRaster)[1], ncol=dim(newRaster)[2])
+rr <-raster::rasterize(srdf, r)
+
+nrCellsOutline  <- raster::freq(rr, value=1)
+
+# calculate area difference (normalized for average difference)
+df <- abs(raster::as.data.frame(raster_diff_min0))
+
+df2 <- subset(df, df$layer != 0)
+
+AvDiff <- sum(df$layer)/nrCellsOutline
+sdDiff <- (sd(df$layer)*nrow(df2))/nrCellsOutline
+##
+
 
 ####
 summedRaster_mutDem_sub_min <- summedRaster_mutDem_sub
@@ -157,8 +280,11 @@ load('aligned_rasterLists/rasterList_ros_M_sub.rda')
 IDList_dem   <- c('IMG_1960','IMG_1972','IMG_1974','IMG_1978','IMG_1980','IMG_1982','IMG_1987','IMG_2049','IMG_2125','IMG_2135','IMG_2141')
 IDList_ros  <- c('CAM000903','CAM000947','CAM001015','CAM001027','CAM001067', 'CAM001137','CAM001391','CAM002901','CAM008052','CAM009554')
 
-summedRaster_dem_M_sub   <- sumRaster(rasterList_dem_M_sub, IDList_dem, type = 'RGB')
+summedRaster_dem_M_sub <- sumRaster(rasterList_dem_M_sub, IDList_dem, type = 'RGB')
 summedRaster_ros_M_sub <- sumRaster(rasterList_ros_M_sub, IDList_ros, type = 'RGB')
+
+# save(summedRaster_dem_M_sub, file = 'aligned_rasterLists/summedRaster_dem_M_sub.rda')
+# save(summedRaster_ros_M_sub, file = 'aligned_rasterLists/summedRaster_ros_M_sub.rda')
 
 
 colfunc <- c("blue","lightblue","black","burlywood1","orange")
@@ -185,6 +311,52 @@ raster::contour(summedRaster_mutDem_sub_int, add=T, col = 'green', lwd=3, maxpix
 # raster::contour(summedRaster_mutDem_sub_int, add=T, col = 'green', lwd=1, maxpixels=5000, nlevels=1)
 # raster::contour(summedRaster_mutDem_sub_max, add=T, col = 'green', lwd=0.5, maxpixels=5000, nlevels=1)
 raster::contour(summedRaster_mutRos_sub_int, add=T, col = 'yellow', lwd=3, maxpixels=5000, nlevels=1)
+
+
+### Calculation of area of wing impacted
+setMask(raster_dem_ros, IDlist, colpalette = colfunc, zlim = c(-1,1), normalized = T, 'mask/mask_mut3.txt')
+
+mask_mut3 <- read.table("mask/mask_mut3.txt", h=T)
+
+raster_dem_ros_M <- maskOutline(raster_dem_ros, mask_mut3, refShape = 'target', 
+                             imageList = imageList_hydFG)
+
+plotHeat(raster_dem_ros_M, IDlist, plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
+         lines = lines_BC0004, landList = landList_mutRos, adjustCoords = TRUE, imageList = imageList_hydFG, 
+         cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc, normalized = T, 
+         zlim = c(-1,1), legendTitle = "", legend = F)
+
+raster_diff_min0 <- raster::calc(raster_dem_ros_M, function(x){x[x<0]<-0; return(x)})
+
+
+
+##
+# calculate area outline
+rasterEx <- raster::extent(raster_diff)
+rRe <- raster::raster(nrow=200,ncol=200)
+raster::extent(rRe) <- rasterEx
+newRaster <- raster::resample(raster_diff_min0, rRe)
+
+poly <- sp::Polygons(list(sp::Polygon(outline_BC0004)),paste("r"))
+
+polyList  <- c(poly)
+polyNames <- c(paste("r"))
+sr=sp::SpatialPolygons(polyList)
+srdf=sp::SpatialPolygonsDataFrame(sr, data.frame(1:length(polyNames), row.names=polyNames))
+
+r <- raster::raster(rasterEx, nrow=dim(newRaster)[1], ncol=dim(newRaster)[2])
+rr <-raster::rasterize(srdf, r)
+
+nrCellsOutline  <- raster::freq(rr, value=1)
+
+# calculate area difference (normalized for average difference)
+df <- abs(raster::as.data.frame(raster_diff_min0))
+
+df2 <- subset(df, df$layer != 0)
+
+AvDiff <- sum(df$layer)/nrCellsOutline
+sdDiff <- (sd(df$layer)*nrow(df2))/nrCellsOutline
+##
 
 
 ###
@@ -257,4 +429,56 @@ raster::contour(summedRaster_mutRos_sub_int, add=T, col = 'yellow', lwd=3, maxpi
 
 
 
+# empty <- raster()
+# extent(empty) <- extent(summedRaster_mutDem_sub_int)
+# plotHeat(empty, IDlist, plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
+#          lines = lines_BC0004, landList = landList, adjustCoords = TRUE, 
+#          imageList = imageList, cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', 
+#          colpalette = colfunc, normalized = T, zlim = c(-1,1), legendTitle = "", legend=F)
+
+
+# setMask(mapMiy/max(abs(xMi)), IDlist, colpalette = colfunc, zlim = c(-1,1), normalized = T, 'mask/mask_mut4.txt')
+# setMask(mapMiy/max(abs(xMi)), IDlist, colpalette = colfunc, zlim = c(-1,1), normalized = T, 'mask/mask_mut5.txt')
+
+mask_mut5 <- read.table("mask/mask_mut5.txt", h=T)
+
+mapMiy_M <- maskOutline(mapMiy/max(abs(xMi)), mask_mut5, refShape = 'target', 
+                                imageList = imageList_hydFG)
+
+plotHeat(mapMiy_M, IDlist, plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
+         lines = lines_BC0004, landList = landList_mutRos, adjustCoords = TRUE, imageList = imageList_hydFG, 
+         cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc, normalized = T, 
+         zlim = c(-1,1), legendTitle = "", legend = F)
+
+raster_diff_min0 <- raster::calc(mapMiy_M, function(x){x[x>0]<-0; return(x)})
+
+
+
+##
+# calculate area outline
+rasterEx <- raster::extent(raster_diff)
+rRe <- raster::raster(nrow=200,ncol=200)
+raster::extent(rRe) <- rasterEx
+newRaster <- raster::resample(raster_diff_min0, rRe)
+
+poly <- sp::Polygons(list(sp::Polygon(outline_BC0004)),paste("r"))
+
+polyList  <- c(poly)
+polyNames <- c(paste("r"))
+sr=sp::SpatialPolygons(polyList)
+srdf=sp::SpatialPolygonsDataFrame(sr, data.frame(1:length(polyNames), row.names=polyNames))
+
+r <- raster::raster(rasterEx, nrow=dim(newRaster)[1], ncol=dim(newRaster)[2])
+rr <-raster::rasterize(srdf, r)
+
+nrCellsOutline  <- raster::freq(rr, value=1)
+
+# calculate area difference (normalized for average difference)
+df <- abs(raster::as.data.frame(raster_diff_min0))
+
+df2 <- subset(df, df$layer != 0)
+
+AvDiff <- sum(df$layer)/nrCellsOutline
+sdDiff <- (sd(df$layer)*nrow(df2))/nrCellsOutline
+##
 

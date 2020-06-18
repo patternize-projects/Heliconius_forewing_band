@@ -238,6 +238,12 @@ IDlist_ALL <- c(IDList_hydP, IDList_hydFG, IDList_amal, IDList_cyr, IDList_not, 
                 IDList_melP, IDList_melFG, IDList_mer, IDList_cyt, IDList_ple, IDList_ecu, IDList_amar, IDList_vul,
                 IDList_the, IDList_mal, IDList_nan, IDList_ros, IDList_agl, IDList_xen)
 
+IDlist_erato <- c(IDList_hydP, IDList_hydFG, IDList_amal, IDList_cyr, IDList_not, IDList_ety, IDList_fav, IDList_ven, 
+                IDList_era, IDList_emm, IDList_phy, IDList_dem, IDList_lat, IDList_mic)
+                
+IDlist_melpomene <- c(IDList_melP, IDList_melFG, IDList_mer, IDList_cyt, IDList_ple, IDList_ecu, IDList_amar, IDList_vul,
+                IDList_the, IDList_mal, IDList_nan, IDList_ros, IDList_agl, IDList_xen)
+
 colVec <- c(rep('orange',length(landList_hydP)),rep('orange',length(landList_hydFG)),rep('orange',length(landList_amal)),
             rep('orange',length(landList_cyr)),rep('orange',length(landList_not)),rep('orange',length(landList_ety)),
             rep('orange',length(landList_fav)),rep('orange',length(landList_ven)),rep('orange',length(landList_era)),
@@ -381,6 +387,90 @@ plot(transformed$PCscores[,1], transformed$PCscores[,2], pch = 19, col = colVec,
      ylab = paste('PC',' (', round((transformed$eigenvalues[2]/sum(transformed$eigenvalues))*100, 1), ' %)'))
 dev.off()
 
+
+### Stat analysis
+# Run permutation to evaluate significance of PC axes
+library(jackstraw)
+matr <- transformed$PCscores
+permutationPA(matr, B=100)
+
+pca_sign <- as.data.frame(matr[,c(1:6)])
+rownames(pca_sign) <- IDlist_ALL
+
+transformed$eigenvalues[c(1:6)]/sum(transformed$eigenvalues)
+
+# Add groups
+sexTable <- read.table('landmarks/sex_table.txt', h=T)
+
+pca_sign$spec <- NA
+pca_sign$sex <- NA
+for(e in 1:nrow(pca_sign)){
+  pca_sign$sex[e] <- as.character(sexTable[match(rownames(pca_sign)[e], sexTable$Image.ID),][1,2])
+  if(rownames(pca_sign)[e] %in% IDlist_erato){
+    pca_sign$spec[e] <- 'era'
+  }
+  if(rownames(pca_sign)[e] %in% IDlist_melpomene){
+    pca_sign$spec[e] <- 'melp'
+  }
+}
+
+res.man <- manova(as.matrix(pca_sign[,c(1:6)]) ~ pca_sign$spec*pca_sign$sex)
+# res.man <- manova(as.matrix(pca_sign[,c(1:6)]) ~ pca_sign$spec)
+# res.man <- manova(as.matrix(pca_sign[,c(1:6)]) ~ pca_sign$sex)
+summ1 <- summary(res.man)
+summ1
+summ2 <- summary.aov(res.man)
+
+aov_table <- c()
+for(e in 1:length(summ2)){
+  aov_table <- rbind(aov_table, c(summ2[[e]]$`F value`[1], summ2[[e]]$`Pr(>F)`[1]))
+}
+
+aov_table
+
+aov_table <- c()
+for(e in 1:length(summ2)){
+  aov_table <- rbind(aov_table, c(summ2[[e]]$`F value`[2], summ2[[e]]$`Pr(>F)`[2]))
+}
+
+aov_table
+
+
+# Run LDA and posterior classification
+library(MASS)
+ldaOut <- lda(x = pca_sign[,c(1:6)], grouping = as.character(pca_sign$spec), CV = TRUE)
+
+class_mat <- ldaOut$posterior >=.5
+
+species <- c('era', 'melp')
+class_table <- c()
+for(e in 1:length(species)){
+  class_vec <- class_mat[, species[e]]
+  class_true <- class_vec[which(as.character(pca_sign$spec) %in% species[e])]
+  class_rate <- sum(class_true)/length(class_true)*100
+  class_table <- rbind(class_table, c(species[e], round(class_rate,2)))
+}
+as.data.frame(class_table)
+
+
+ldaOut <- lda(x = pca_sign[,c(1:6)], grouping = as.character(pca_sign$sex), CV = TRUE, prior=c(0.5,0.5))
+
+class_mat <- ldaOut$posterior >=.5
+
+sexes <- c('m','f')
+class_table <- c()
+for(e in 1:length(sexes)){
+  class_vec <- class_mat[, sexes[e]]
+  class_true <- class_vec[which(as.character(pca_sign$sex) %in% sexes[e])]
+  class_rate <- sum(class_true)/length(class_true)*100
+  class_table <- rbind(class_table, c(sexes[e], round(class_rate,2)))
+}
+as.data.frame(class_table)
+
+
+
+
+
 # Subset landmarks
 pdf('Landmark_PCA_allsubset.pdf',width=10,height=10)
 plot(transformed_sub$PCscores[,1], transformed_sub$PCscores[,2], pch = 19, col = colVec, 
@@ -388,6 +478,82 @@ plot(transformed_sub$PCscores[,1], transformed_sub$PCscores[,2], pch = 19, col =
      ylab = paste('PC',' (', round((transformed_sub$eigenvalues[2]/sum(transformed_sub$eigenvalues))*100, 1), ' %)'))
 dev.off()
 
+### Stat analysis
+# Run permutation to evaluate significance of PC axes
+library(jackstraw)
+matr <- transformed_sub$PCscores
+permutationPA(matr, B=100)
+
+pca_sign <- as.data.frame(matr[,c(1:5)])
+rownames(pca_sign) <- IDlist_ALL
+
+transformed_sub$eigenvalues[c(1:5)]/sum(transformed_sub$eigenvalues)
+
+# Add groups
+sexTable <- read.table('landmarks/sex_table.txt', h=T)
+
+pca_sign$spec <- NA
+pca_sign$sex <- NA
+for(e in 1:nrow(pca_sign)){
+  pca_sign$sex[e] <- as.character(sexTable[match(rownames(pca_sign)[e], sexTable$Image.ID),][1,2])
+  if(rownames(pca_sign)[e] %in% IDlist_erato){
+    pca_sign$spec[e] <- 'era'
+  }
+  if(rownames(pca_sign)[e] %in% IDlist_melpomene){
+    pca_sign$spec[e] <- 'melp'
+  }
+}
+
+res.man <- manova(as.matrix(pca_sign[,c(1:5)]) ~ pca_sign$spec*pca_sign$sex)
+summ1 <- summary(res.man)
+summ1
+summ2 <- summary.aov(res.man)
+
+aov_table <- c()
+for(e in 1:length(summ2)){
+  aov_table <- rbind(aov_table, c(summ2[[e]]$`F value`[1], summ2[[e]]$`Pr(>F)`[1]))
+}
+
+aov_table
+
+aov_table <- c()
+for(e in 1:length(summ2)){
+  aov_table <- rbind(aov_table, c(summ2[[e]]$`F value`[2], summ2[[e]]$`Pr(>F)`[2]))
+}
+
+aov_table
+
+
+# Run LDA and posterior classification
+library(MASS)
+ldaOut <- lda(x = pca_sign[,c(1:5)], grouping = as.character(pca_sign$spec), CV = TRUE, prior=c(0.5,0.5))
+
+class_mat <- ldaOut$posterior >=.5
+
+species <- c('era', 'melp')
+class_table <- c()
+for(e in 1:length(species)){
+  class_vec <- class_mat[, species[e]]
+  class_true <- class_vec[which(as.character(pca_sign$spec) %in% species[e])]
+  class_rate <- sum(class_true)/length(class_true)*100
+  class_table <- rbind(class_table, c(species[e], round(class_rate,2)))
+}
+as.data.frame(class_table)
+
+
+ldaOut <- lda(x = pca_sign[,c(1:5)], grouping = as.character(pca_sign$sex), CV = TRUE, prior=c(0.5,0.5))
+
+class_mat <- ldaOut$posterior >=.5
+
+sexes <- c('m','f')
+class_table <- c()
+for(e in 1:length(sexes)){
+  class_vec <- class_mat[, sexes[e]]
+  class_true <- class_vec[which(as.character(pca_sign$sex) %in% sexes[e])]
+  class_rate <- sum(class_true)/length(class_true)*100
+  class_table <- rbind(class_table, c(sexes[e], round(class_rate,2)))
+}
+as.data.frame(class_table)
 ############################
 # Calculate mean transformation for erato and melpomene
 ############################
