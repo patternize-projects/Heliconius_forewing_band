@@ -155,6 +155,9 @@ layout(matrix(c(1:56), nrow=14, byrow=TRUE))
 # layout.show(n=21)
 par(mar=c(0,0,0,0), oma=c(0,12,0,3), xpd = NA)
 
+# mutants
+IDList_mutDem  <- c('EratoDem_mut9_LDFW','EratoDem_mut9_RDFW','EratoDem_mut11_LDFW','EratoDem_mut11_RDFW','MU4_DLFW','MU4_DRFW','MU5_DLFW','MU5_DRFW','MU6_DLFW','MU6_DRFW')
+IDList_mutRos <- c('Hmr_mut1_DRFW','Hmr_mut2_DLFW','Hmr_mut2_DRFW','Hmr_mut3_DLFW','Hmr_mut3_DRFW','Hmr_mut4_DLFW','Hmr_mut4_DRFW','rosina_mut_dfw','Rosina-mutant-FK1-1','Rosina-mutant-FK1-2')
 
 load('aligned_rasterLists/rasterList_mutDem_sub.rda')
 load('aligned_rasterLists/rasterList_mutRos_sub_M.rda')
@@ -195,7 +198,7 @@ for(e in 1:length(IDList_list_E)){
                    cartoonID = 'BC0004', landList = landList_list_M[[e]], adjustCoords = TRUE, imageList = imageList_list_M[[e]])
   text(1900,1650, substitute(paste(nn,' ± ',ss), list(nn=round(mean(areaM$Area), 2), ss=round(sd(areaM$Area), 2))), cex = 18, srt = 45)
   
-  colfunc <- c("blue","lightblue","black","burlywood1","orange")
+  colfunc <- c("blue","lightblue","black","indianred1","firebrick1")
   raster_diff <- summedRaster_E_M_sub_m/length(IDList_list_E[[e]]) - summedRaster_M_M_sub_m/length(IDList_list_M[[e]])
   plotHeat(raster_diff, IDList_list_E[[e]], plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
            lines = lines_BC0004, landList = landList_list_E[[e]], adjustCoords = TRUE, imageList = imageList_hydFG, 
@@ -236,7 +239,7 @@ for(e in 1:length(IDList_list_E)){
   p_val <- 1 - cdf(T_dist, t_stat) + cdf(T_dist, -t_stat)
   ##
   
-  text(1900,1650, substitute(paste(nn,' ? ',ss), list(nn=round(AvDiff, 2), ss=round(sdDiff, 2))), cex = 18, srt = 45)
+  text(1900,1650, substitute(paste(nn,' ± ',ss), list(nn=round(AvDiff, 2), ss=round(sdDiff, 2))), cex = 18, srt = 45)
   
   plotHeat(raster_diff, IDList_list_E[[e]], plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
            lines = lines_BC0004, landList = landList_list_E[[e]], adjustCoords = TRUE, imageList = imageList_hydFG, 
@@ -251,3 +254,5 @@ for(e in 1:length(IDList_list_E)){
   
 }
 dev.off()
+
+

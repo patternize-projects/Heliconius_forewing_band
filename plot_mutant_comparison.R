@@ -134,7 +134,7 @@ plotHeat(summedRaster_dem_sub_m, IDList_dem, plotCartoon = TRUE, refShape = 'tar
          lines = lines_BC0004, landList = landList_dem, adjustCoords = TRUE, imageList = imageList_hydFG,
          cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc, legend = F)
 
-colfunc <- c("blue","lightblue","black","burlywood1","orange")
+colfunc <- c("blue","lightblue","black","indianred1","firebrick1")
 raster_diff <- summedRaster_mutDem_sub/length(IDList_mutDem) - summedRaster_dem_sub_m/length(IDList_dem)
 
 plotHeat(raster_diff, IDList_mutDem, plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
@@ -162,7 +162,7 @@ plotHeat(summedRaster_ros_sub_m, IDList_ros, plotCartoon = TRUE, refShape = 'tar
          lines = lines_BC0004, landList = landList_ros, adjustCoords = TRUE, imageList = imageList_hydFG,
          cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc, legend = F)
 
-colfunc <- c("blue","lightblue","black","burlywood1","orange")
+colfunc <- c("blue","lightblue","black","indianred1","firebrick1")
 raster_diff <- summedRaster_mutRos_sub_M/length(IDList_mutRos) - summedRaster_ros_sub_m/length(IDList_ros)
 
 plotHeat(raster_diff, IDList_mutRos, plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
@@ -224,16 +224,16 @@ summedRaster_mutDem_sub_min <- summedRaster_mutDem_sub
 summedRaster_mutDem_sub_min[summedRaster_mutDem_sub_min >= 1] <- 1
 
 plotHeat(summedRaster_mutDem_sub_min, IDList_mutDem[1], plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
-         lines = lines_BC0004, landList = landList_mutDem, adjustCoords = TRUE, imageList = imageList_mutDem, 
+         lines = lines_BC0004, landList = landList_mutDem, adjustCoords = TRUE, imageList = imageList_hydFG, 
          cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc)
 
 summedRaster_mutDem_sub_int <- summedRaster_mutDem_sub
-summedRaster_mutDem_sub_int[summedRaster_mutDem_sub_int < 2] <- 0
-summedRaster_mutDem_sub_int[summedRaster_mutDem_sub_int >= 2] <- 1
+summedRaster_mutDem_sub_int[summedRaster_mutDem_sub_int < 5] <- 0
+summedRaster_mutDem_sub_int[summedRaster_mutDem_sub_int >= 5] <- 1
 
 colfunc <- c('green')
 plotHeat(summedRaster_mutDem_sub_int, IDList_mutDem[1], plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
-         lines = lines_BC0004, landList = landList_mutDem, adjustCoords = TRUE, imageList = imageList_mutDem, 
+         lines = lines_BC0004, landList = landList_mutDem, adjustCoords = TRUE, imageList = imageList_hydFG, 
          cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc, legend = F)
 
 summedRaster_mutDem_sub_max <- summedRaster_mutDem_sub
@@ -242,23 +242,23 @@ summedRaster_mutDem_sub_max[summedRaster_mutDem_sub_max == 10] <- 1
 
 
 plotHeat(summedRaster_mutDem_sub_max, IDList_mutDem[1], plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
-         lines = lines_BC0004, landList = landList_mutDem, adjustCoords = TRUE, imageList = imageList_mutDem, 
+         lines = lines_BC0004, landList = landList_mutDem, adjustCoords = TRUE, imageList = imageList_hydFG, 
          cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc)
 ####
 summedRaster_mutRos_sub_min <- summedRaster_mutRos_sub_M
 summedRaster_mutRos_sub_min[summedRaster_mutRos_sub_min >= 1] <- 1
 
 plotHeat(summedRaster_mutRos_sub_min, IDList_mutRos[1], plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
-         lines = lines_BC0004, landList = landList_mutRos, adjustCoords = TRUE, imageList = imageList_mutRos, 
+         lines = lines_BC0004, landList = landList_mutRos, adjustCoords = TRUE, imageList = imageList_hydFG, 
          cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc)
 
 summedRaster_mutRos_sub_int <- summedRaster_mutRos_sub_M
-summedRaster_mutRos_sub_int[summedRaster_mutRos_sub_int < 2] <- 0
-summedRaster_mutRos_sub_int[summedRaster_mutRos_sub_int >= 2] <- 1
+summedRaster_mutRos_sub_int[summedRaster_mutRos_sub_int < 5] <- 0
+summedRaster_mutRos_sub_int[summedRaster_mutRos_sub_int >= 5] <- 1
 
 colfunc <- c('yellow')
 plotHeat(summedRaster_mutRos_sub_int, IDList_mutRos[1], plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
-         lines = lines_BC0004, landList = landList_mutRos, adjustCoords = TRUE, imageList = imageList_mutRos, 
+         lines = lines_BC0004, landList = landList_mutRos, adjustCoords = TRUE, imageList = imageList_hydFG, 
          cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc, legend =F)
 
 summedRaster_mutRos_sub_max <- summedRaster_mutRos_sub_M
@@ -266,7 +266,7 @@ summedRaster_mutRos_sub_max[summedRaster_mutRos_sub_max < 10] <- 0
 summedRaster_mutRos_sub_max[summedRaster_mutRos_sub_max == 10] <- 1
 
 plotHeat(summedRaster_mutRos_sub_max, IDList_mutRos[1], plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
-         lines = lines_BC0004, landList = landList_mutRos, adjustCoords = TRUE, imageList = imageList_mutRos, 
+         lines = lines_BC0004, landList = landList_mutRos, adjustCoords = TRUE, imageList = imageList_hydFG, 
          cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', colpalette = colfunc)
 
 
@@ -287,11 +287,11 @@ summedRaster_ros_M_sub <- sumRaster(rasterList_ros_M_sub, IDList_ros, type = 'RG
 # save(summedRaster_ros_M_sub, file = 'aligned_rasterLists/summedRaster_ros_M_sub.rda')
 
 
-colfunc <- c("blue","lightblue","black","burlywood1","orange")
+colfunc <- c("blue","lightblue","black","indianred1","firebrick1")
 raster_dem_ros <- summedRaster_dem_M_sub/length(IDList_dem) - summedRaster_ros_M_sub/length(IDList_ros)
 plotHeat(raster_dem_ros, IDlist, plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
          lines = lines_BC0004, landList = landList, adjustCoords = TRUE, 
-         imageList = imageList, cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', 
+         imageList = imageList_hydFG, cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', 
          colpalette = colfunc, normalized = T, zlim = c(-1,1), legendTitle = "", legend=F)
 
 # raster_ven_vul <- summedRaster_ven_M_sub/length(IDList_ven) - summedRaster_vul_M_sub/length(IDList_vul)
@@ -419,7 +419,7 @@ raster::extent(mapMay) <- raster::extent(raster_dem_ros)
 colfunc <- c("blue","lightblue","black","indianred1","firebrick1")
 plotHeat(mapMiy/max(abs(xMi)), IDlist, plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004, 
          lines = lines_BC0004, landList = landList, adjustCoords = TRUE, 
-         imageList = imageList, cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', 
+         imageList = imageList_hydFG, cartoonID = 'BC0004', cartoonFill = 'black', cartoonOrder = 'under', 
          colpalette = colfunc, normalized = T, zlim = c(-1,1), legendTitle = "", legend=F)
 
 raster::contour(summedRaster_mutDem_sub_int, add=T, col = 'green', lwd=3, maxpixels=5000, nlevels=1)

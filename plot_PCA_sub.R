@@ -130,7 +130,7 @@ outline_BC0004 <- read.table('cartoon/BC0004_outline.txt', h = F)
 lines_BC0004 <- list.files(path ='cartoon', pattern ='BC0004_vein', full.names = T)
 
 ########################################################
-sexTable <- read.table('landmarks/sex_table_PCA.txt', h=T)
+sexTable <- read.table('landmarks/sex_table.txt', h=T)
 sexTable$Image.ID <- gsub('_calibrated', '', sexTable$Image.ID)
 head(sexTable) 
 ########################################################
@@ -162,7 +162,7 @@ library(jackstraw)
 matr <- t(pcaOut[[1]])
 out <- pcaOut[[3]]
 plot(out$x[,c(1,2)])
-permutationPA(matr, B=100)
+# permutationPA(matr, B=100)
 
 pca_sign <- out$x[,c(1:10)]
 
@@ -225,6 +225,31 @@ for(e in 1:length(sexes)){
 }
 as.data.frame(class_table)
 
+# permutation of radom sample set
+mresult <-c()
+fresult <- c()
+for(x in c(1:100)){
+  ldaOut <- lda(x = pca_sign, grouping = sample(sample(c(rep('m',70),rep('f',70)))), CV = TRUE, prior=c(0.5,0.5))
+  
+  class_mat <- ldaOut$posterior >=.5
+  
+  sexes <- c('m','f')
+  class_table <- c()
+  for(e in 1:length(sexes)){
+    class_vec <- class_mat[, sexes[e]]
+    class_true <- class_vec[which(as.character(group$sex) %in% sexes[e])]
+    class_rate <- sum(class_true)/length(class_true)*100
+    class_table <- rbind(class_table, c(sexes[e], round(class_rate,2)))
+  }
+  mresult <- c(mresult, as.numeric(as.character(as.data.frame(class_table)$V2[1])))
+  fresult <- c(fresult, as.numeric(as.character(as.data.frame(class_table)$V2[2])))
+}
+mean(mresult)
+mean(fresult)
+
+sd(mresult)
+sd(fresult)
+
 ########################################################
 # PCA for H. melpomene 
 ########################################################
@@ -254,7 +279,7 @@ library(jackstraw)
 matr <- t(pcaOut[[1]])
 out <- pcaOut[[3]]
 plot(out$x[,c(1,2)])
-permutationPA(matr, B=100)
+# permutationPA(matr, B=100)
 
 pca_sign <- out$x[,c(1:11)]
 
@@ -317,6 +342,31 @@ for(e in 1:length(sexes)){
 }
 as.data.frame(class_table)
 
+# permutation of radom sample set
+mresult <-c()
+fresult <- c()
+for(x in c(1:100)){
+  ldaOut <- lda(x = pca_sign, grouping = sample(c(rep('m',70),rep('f',71))), CV = TRUE, prior=c(0.5,0.5))
+  
+  class_mat <- ldaOut$posterior >=.5
+  
+  sexes <- c('m','f')
+  class_table <- c()
+  for(e in 1:length(sexes)){
+    class_vec <- class_mat[, sexes[e]]
+    class_true <- class_vec[which(as.character(group$sex) %in% sexes[e])]
+    class_rate <- sum(class_true)/length(class_true)*100
+    class_table <- rbind(class_table, c(sexes[e], round(class_rate,2)))
+  }
+  mresult <- c(mresult, as.numeric(as.character(as.data.frame(class_table)$V2[1])))
+  fresult <- c(fresult, as.numeric(as.character(as.data.frame(class_table)$V2[2])))
+}
+mean(mresult)
+mean(fresult)
+
+sd(mresult)
+sd(fresult)
+
 ########################################################
 ###PCA for H. erato and H. melpomene 
 ########################################################
@@ -348,7 +398,7 @@ library(jackstraw)
 matr <- t(pcaOut[[1]])
 out <- pcaOut[[3]]
 plot(out$x[,c(1,2)])
-permutationPA(matr, B=100)
+# permutationPA(matr, B=100)
 
 pca_sign <- out$x[,c(1:18)]
 
@@ -486,7 +536,7 @@ library(jackstraw)
 matr <- t(pcaOut[[1]])
 out <- pcaOut[[3]]
 plot(out$x[,c(1,2)])
-permutationPA(matr, B=100)
+# permutationPA(matr, B=100)
 
 pca_sign <- out$x[,c(1:15)]
 
@@ -544,3 +594,114 @@ for(e in 1:length(species)){
   class_table <- rbind(class_table, c(species[e], round(class_rate,2)))
 }
 as.data.frame(class_table)
+
+
+
+
+########################################################
+###PCA for H. erato and H. melpomene - non postman
+########################################################
+# population and color list
+
+popList_era <- list(IDList_cyr, IDList_lat, IDList_emm,
+                    IDList_not, IDList_ety, IDList_amal, IDList_era, IDList_mic)
+
+popList_mel <- list(IDList_cyt, IDList_mal, IDList_agl, 
+                    IDList_ple, IDList_ecu, IDList_mer, IDList_the, IDList_xen)
+
+popList_mel_era <- c(popList_era, popList_mel)
+
+colList_mel_era <- c(colbli_palette, colbli_palette)
+
+symbolList_mel_era <- c(1,1,1,1,1,1,1,1,16,16,16,16,16,16,16,16)
+
+TotalList_era <- c(rasterList_cyr_M_sub, 
+                   rasterList_lat_M_sub, rasterList_emm_M_sub, rasterList_not_M_sub, rasterList_ety_M_sub, 
+                   rasterList_amal_M_sub, rasterList_era_M_sub, rasterList_mic_M_sub)
+
+TotalList_mel <- c(rasterList_cyt_M_sub,
+                   rasterList_mal_M_sub, rasterList_agl_M_sub, rasterList_ple_M_sub, rasterList_ecu_M_sub, 
+                   rasterList_mer_M_sub, rasterList_the_M_sub, rasterList_xen_M_sub)
+
+
+
+TotalList_mel_era <- c(TotalList_era, TotalList_mel)
+
+png('PCA_subset.png',width=1000,height=1000)
+pcaOut <- patPCA(TotalList_mel_era, popList_mel_era, colList_mel_era, symbolList = symbolList_mel_era, plot = TRUE, plotType = 'points',
+                 plotChanges = TRUE, PCx = 1, PCy = 2, plotCartoon = TRUE, refShape = 'target', outline = outline_BC0004,
+                 imageList = imageList, cartoonID = 'BC0004', normalized = TRUE, cartoonFill = 'black',
+                 cartoonOrder = 'under', legendTitle = 'Predicted', colpalette = colfunc)
+dev.off()
+pdf('PCA_subset.pdf',width=10,height=10)
+pcaOut <- patPCA(TotalList_mel_era, popList_mel_era, colList_mel_era, symbolList = symbolList_mel_era, plot = TRUE, plotType = 'points',
+                 plotChanges = FALSE, PCx = 1, PCy = 2, plotCartoon = FALSE, refShape = 'target', outline = outline_BC0004,
+                 imageList = imageList, cartoonID = 'BC0004', normalized = TRUE, cartoonFill = 'black',
+                 cartoonOrder = 'under', legendTitle = 'Predicted', colpalette = colfunc)
+dev.off()
+
+### Stat analysis
+# Run permutation to evaluate significance of PC axes
+library(jackstraw)
+matr <- t(pcaOut[[1]])
+out <- pcaOut[[3]]
+plot(out$x[,c(1,2)])
+permutationPA(matr, B=100)
+
+pca_sign <- out$x[,c(1:13)]
+
+summ <- summary(out)
+summ$importance[2,c(1:13)]
+
+# Create groups list
+popList1 <- popList_era
+popList2 <- popList_mel
+
+pop1 <- c('cyr', 'lat', 'emm', 'not', 'ety', 'amal', 'era', 'mic')
+pop2 <- c('cyt', 'mal', 'agl', 'ple', 'ecu', 'mer', 'the', 'xen')
+pop <- c(pop1, pop2)
+
+group <- c()
+for(p in 1:length(popList1)){
+  for(ind in 1:length(popList1[[p]])){
+    group <- rbind(group, c(pop1[p], "erato"))
+  }
+}
+for(p in 1:length(popList2)){
+  for(ind in 1:length(popList2[[p]])){
+    group <- rbind(group, c(pop2[p], "melp"))
+  }
+}
+
+group <- as.data.frame(group)
+colnames(group) <- c('pop', 'spec')
+
+# Run MANOVA
+dat <- data.frame(pca_sign, group)
+res.man <- manova(as.matrix(dat[,c(1:18)]) ~ dat$spec*dat$pop)
+summ1 <- summary(res.man)
+summ2 <- summary.aov(res.man)
+
+aov_table <- c()
+for(e in 1:length(summ2)){
+  aov_table <- rbind(aov_table, c(summ2[[e]]$`F value`[1], summ2[[e]]$`Pr(>F)`[1]))
+}
+
+aov_table
+
+# Run LDA and posterior classification
+library(MASS)
+ldaOut <- lda(x = pca_sign, grouping = as.character(group$spec), CV = TRUE)
+
+class_mat <- ldaOut$posterior >=.5
+
+species <- c('erato', 'melp')
+class_table <- c()
+for(e in 1:length(species)){
+  class_vec <- class_mat[, species[e]]
+  class_true <- class_vec[which(as.character(group$spec) %in% species[e])]
+  class_rate <- sum(class_true)/length(class_true)*100
+  class_table <- rbind(class_table, c(species[e], round(class_rate,2)))
+}
+as.data.frame(class_table)
+
